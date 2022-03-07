@@ -39,7 +39,7 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        $this->middleware('auth');
     }
 
     /**
@@ -69,7 +69,7 @@ class RegisterController extends Controller
         $nama = $request->input('nama');
         $username = $request->input('username');
         $password = $request->input('password');
-        $confirmpas = $request->input('password_confirm');
+        $confirmpas = $request->input('password_confirmation');
 
         if(empty($nama) || empty($username) || empty($password))
         {

@@ -17,9 +17,12 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
-});
+    //register admin 
+    Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
+    //home
+    Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
+});
 
 Route::get('/', function () {
     return view('welcome');
