@@ -15,7 +15,6 @@
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                <form action="{{route('register')}}" method="POST">
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
@@ -81,7 +80,6 @@
                         </div>
                     </form>
                 </div>
-                </form>
             </div>
         </div>
     </div>
