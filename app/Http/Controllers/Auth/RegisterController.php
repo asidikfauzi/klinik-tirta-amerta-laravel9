@@ -64,6 +64,12 @@ class RegisterController extends Controller
      * @return \App\Models\User
      */
 
+    public function index()
+    {
+        return view('auth.register');
+    }
+
+    
     public function register(Request $request)
     {
         $nama = $request->input('nama');

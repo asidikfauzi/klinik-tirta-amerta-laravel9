@@ -1109,10 +1109,6 @@ section {
   border-color: #5cb874;
 }
 
-input.btn-boots:focus{
-  border-color: #5cb874;
-}
-
 .contact .php-email-form input {
   height: 44px;
 }

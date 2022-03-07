@@ -18,6 +18,7 @@ Auth::routes();
 
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     //register admin 
+    Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
     Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
     //home

@@ -12,7 +12,7 @@
                         @csrf
 
                         <div class="row mb-3">
-                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+                            <label for="username" class="col-md-4 col-form-label text-md-end">{{ __('Username') }}</label>
 
                             <div class="col-md-6">
                                 <input id="username" type="username" class="btn-boots form-control  @error('username') is-invalid @enderror" name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
@@ -41,7 +41,13 @@
 
                         <div class="row mb-0">
                             <div class="col-md-1 offset-md-4">
-                                <button type="submit">
+                                <button type="submit" class="btn-boots" 
+                                style="background: #5cb874;
+                                border: 0;
+                                padding: 10px 24px;
+                                color: #fff;
+                                transition: 0.4s;
+                                border-radius: 4px;">
                                     {{ __('Login') }}
                                 </button>
                             </div>
