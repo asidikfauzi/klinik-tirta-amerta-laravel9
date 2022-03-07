@@ -77,7 +77,12 @@
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
           <li><a class="getstarted scrollto" href="#about">Get Started</a></li>
-          <li><a class="getstarted" href="{{url('login')}}">Login</a></li>
+          @if(\Auth::user())
+          <li><a class="getstarted" href="{{route('admin.dashboard')}}">{{Auth()->user()->nama}}</a></li>
+          @else
+          <li><a class="getstarted" href="{{route('login')}}">Login</a></li>
+          @endif
+          
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav>
