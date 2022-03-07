@@ -41,8 +41,8 @@
 
                         <div class="row mb-0">
                             <div class="col-md-1 offset-md-4">
-                                <button type="submit" class="btn-boots" 
-                                style="background: #5cb874;
+                                <button type="submit" 
+                                style=" background: #5cb874;
                                 border: 0;
                                 padding: 10px 24px;
                                 color: #fff;

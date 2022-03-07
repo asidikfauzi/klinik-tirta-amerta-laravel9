@@ -73,7 +73,15 @@
 
                         <div class="row mb-0">
                             <div class="col-md-1 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" 
+                                style=" background: #5cb874;
+                                border: 0;
+                                padding: 10px 24px;
+                                color: #fff;
+                                transition: 0.4s;
+                                border-radius: 4px;"
+                                >
+                                
                                     {{ __('Register') }}
                                 </button>
                             </div>
