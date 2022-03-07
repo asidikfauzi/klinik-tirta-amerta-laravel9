@@ -28,7 +28,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo;
 
     protected function redirectTo()
     {
@@ -44,6 +44,7 @@ class LoginController extends Controller
     {
         return redirect()->route('login');
     }
+    
     public function login(Request $request)
     {
         $username = $request->input('username');

@@ -323,7 +323,7 @@ h1, h2, h3, h4, h5, h6 {
 #hero {
   width: 100%;
   height: 70vh;
-  background-color: rgba(9, 9, 9, 0.8);
+  background-color: #F5F5F5;
   overflow: hidden;
   position: relative;
 }
@@ -1105,16 +1105,21 @@ section {
   font-size: 14px;
   border-radius: 4px;
 }
-.contact .php-email-form input:focus, .contact .php-email-form textarea:focus {
+.contact .php-email-form input:focus, .contact .php-email-form textarea:focus, input.btn-boots:focus {
   border-color: #5cb874;
 }
+
+input.btn-boots:focus{
+  border-color: #5cb874;
+}
+
 .contact .php-email-form input {
   height: 44px;
 }
 .contact .php-email-form textarea {
   padding: 10px 12px;
 }
-.contact .php-email-form button[type=submit] {
+ button[type=submit] {
   background: #5cb874;
   border: 0;
   padding: 10px 24px;
