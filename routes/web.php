@@ -21,8 +21,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
     Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
-    //home
-    Route::get('home', [App\Http\Controllers\HomeController::class, 'index'])->name('admin.dashboard');
+    Route::get('home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('pasien/create', [App\Http\Controllers\AdminController::class, 'create'])->name('admin-create-pasien');
+    Route::post('pasien/create', [App\Http\Controllers\AdminController::class, 'store'])->name('admin-create-pasien');
 });
 
 Route::get('/', function () {

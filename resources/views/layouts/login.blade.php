@@ -5,7 +5,11 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
+  @if(auth()->user()->username == "admin")
+  <title>Tirta Amerta - Admin</title>
+  @else
   <title>Tirta Amerta - Klinik</title>
+  @endif
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -56,8 +60,11 @@
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
-
+      @if(auth()->user()->username == 0)
+      <h1 class="logo me-auto"><a href="index.html">Daftar Pasien Klinik Tirta Amerta</a></h1>
+      @else
       <h1 class="logo me-auto"><a href="index.html">Klinik Tirta Amerta</a></h1>
+      @endif
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
     

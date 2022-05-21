@@ -1,0 +1,18 @@
+.button {
+    background-color: #4CAF50; 
+    border: none;
+    border-radius: 15px;
+    color: white;
+    padding: 10px 15px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+.button-submit {
+    background-color: white; 
+    color: #4CAF50; 
+    border: 2px solid #4CAF50;
+}
