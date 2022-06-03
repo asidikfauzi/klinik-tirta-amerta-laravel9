@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  @if(auth()->user()->username == "admin")
+  @if(\Auth::user())
   <title>Tirta Amerta - Admin</title>
   @else
   <title>Tirta Amerta - Klinik</title>
@@ -60,7 +60,7 @@
   <!-- ======= Header ======= -->
   <header id="header" class="d-flex align-items-center">
     <div class="container d-flex align-items-center">
-      @if(auth()->user()->username == 0)
+      @if(\Auth::user())
       <h1 class="logo me-auto"><a href="index.html">Daftar Pasien Klinik Tirta Amerta</a></h1>
       @else
       <h1 class="logo me-auto"><a href="index.html">Klinik Tirta Amerta</a></h1>
@@ -71,7 +71,8 @@
       <!-- .navbar -->
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="{{route('home')}}">Home</a></li>
+          <li><a class="nav-link scrollto" href="{{route('home')}}">Home</a></li>
+          @if(!Auth::user())
           <li><a class="nav-link scrollto" href="#about">Profil</a></li>
           <li><a class="nav-link scrollto" href="#services">Dokter</a></li>
           <li class="dropdown"><a href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
@@ -83,8 +84,19 @@
             </ul>
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
+          @endif
+          
           @if(\Auth::user())
-          <li><a class="getstarted" href="{{route('admin.dashboard')}}">{{Auth()->user()->nama}}</a></li>
+          <li class="dropdown"><a href="#"><span>{{Auth()->user()->nama}}</span> </i></a>
+            <ul>
+              <li><a href="{{ route('admin.dashboard') }}">Daftar Pasien</a></li>
+              <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
+              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
+                {{ csrf_field() }}
+              </form>
+              
+            </ul>
+          </li>
           @else
           <li><a class="getstarted" href="{{route('login')}}">Login</a></li>
           @endif
@@ -97,9 +109,7 @@
   </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
-  <section id="hero" style="background-color: #f5f5f5">
     @yield("content")
-  </section>
 
   </main><!-- End #main -->
 

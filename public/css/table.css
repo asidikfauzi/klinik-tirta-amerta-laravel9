@@ -1,5 +1,5 @@
 table, th, td, tr {
-    border: 2px solid #F8F8FF;
+    border: 2px solid hsl(240, 100%, 99%);
     text-align: left;
 }
 table {
@@ -15,7 +15,6 @@ th {
 th, td {
     padding: 10px;
 }
-
 
 .content {
     padding-right: 100px;

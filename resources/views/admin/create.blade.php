@@ -5,6 +5,7 @@
 <link rel="stylesheet" type="text/css" href="{{asset('css/app-klinik.css')}}">
 
 @section('content')
+<section id="hero" style="background-color: #f5f5f5">
 <div class="container">
     @if (session('success'))
         <div class="alert alert-success">
@@ -86,4 +87,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\DataTables;
 
 class AdminController extends Controller
 {
@@ -16,7 +17,24 @@ class AdminController extends Controller
     public function index()
     {
         //
-        return view('admin.index');
+        $data = Pasien::orderBy('created_at', 'desc')->get();
+        return view('admin.index', compact('data'));
+    }
+
+    public function getData()
+    {
+        $data = Pasien::orderBy('created_at', 'DESC');
+        return Datatables::of($data)->addIndexColumn()
+                        ->addColumn('aksi', function($row){
+                            return 
+                            '<a href="#">
+                            <i class="bi bi-pencil-square" style="color:blue"></i> </a> 
+                            <a class="btn-link-danger modal-deletetab1" href="#" data-id="'.$row->no_pasien.'">
+                            <i class="bi bi-trash" style="color:red"></i> </a>';
+                        })
+                        ->rawColumns(['aksi'])
+                        ->make(true);
+        
     }
 
     /**
