@@ -72,20 +72,6 @@
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto" href="{{route('home')}}">Home</a></li>
-          @if(!Auth::user())
-          <li><a class="nav-link scrollto" href="#about">Profil</a></li>
-          <li><a class="nav-link scrollto" href="#services">Dokter</a></li>
-          <li class="dropdown"><a href="#"><span>Layanan</span> <i class="bi bi-chevron-down"></i></a>
-            <ul>
-              <li><a href="#">Penyakit Yang Ditangani</a></li>
-              <li><a href="#">Drop Down 2</a></li>
-              <li><a href="#">Drop Down 3</a></li>
-              <li><a href="#">Drop Down 4</a></li>
-            </ul>
-          </li>
-          <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          @endif
-          
           @if(\Auth::user())
           <li class="dropdown"><a href="#"><span>{{Auth()->user()->nama}}</span> </i></a>
             <ul>
