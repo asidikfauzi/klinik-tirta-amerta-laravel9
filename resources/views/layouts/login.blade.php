@@ -90,6 +90,7 @@
           <li class="dropdown"><a href="#"><span>{{Auth()->user()->nama}}</span> </i></a>
             <ul>
               <li><a href="{{ route('admin.dashboard') }}">Daftar Pasien</a></li>
+              <li><a href="{{ route('admin.dashboard') }}">Pasien Non-aktif</a></li>
               <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
                 {{ csrf_field() }}
@@ -110,7 +111,7 @@
 
   <!-- ======= Hero Section ======= -->
     @yield("content")
-
+    @include('sweetalert::alert')
   </main><!-- End #main -->
 
   <!-- ======= Footer ======= -->
@@ -145,6 +146,7 @@
   <script src="{{asset('assets/vendor/isotope-layout/isotope.pkgd.min.js')}}"></script>
   <script src="{{asset('assets/vendor/swiper/swiper-bundle.min.js')}}"></script>
   <script src="{{asset('assets/vendor/php-email-form/validate.js')}}"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
   <!-- Template Main JS File -->
   <script src="{{asset('assets/js/main.js')}}"></script>

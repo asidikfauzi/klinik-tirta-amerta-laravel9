@@ -25,6 +25,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::get('home/getdata', [App\Http\Controllers\AdminController::class, 'getData'])->name('admin.getdata');
     Route::get('pasien/create', [App\Http\Controllers\AdminController::class, 'create'])->name('admin-create-pasien');
     Route::post('pasien/create', [App\Http\Controllers\AdminController::class, 'store'])->name('admin-create-pasien');
+    Route::get('pasien/edit/{id}', [App\Http\Controllers\AdminController::class, 'edit'])->name('admin-edit-pasien');
+    Route::post('pasien/edit/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('admin-edit-pasien');
+    Route::get('pasien/delete/{id}', [App\Http\Controllers\AdminController::class, 'destroy'])->name('admin-delete-pasien');
 });
 
 Route::get('/', function () {

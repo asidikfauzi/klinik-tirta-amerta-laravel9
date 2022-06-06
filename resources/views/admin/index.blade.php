@@ -106,19 +106,19 @@
             var judulid = $(this).attr('data-id');
             swal({
                 title: "Yakin?",
-                text: "kamu akan menghapus data ini ?",
+                text: "kamu akan non-aktifkan pasien ini ?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
                 })
                 .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/admin/delete/"+judulid+"" 
-                    swal("Data berhasil dihapus", {
+                    window.location = "/admin/pasien/delete/"+judulid+"" 
+                    swal("Pasien berhasil dinon-aktifkan", {
                     icon: "success",
                     });
                 } else {
-                    swal("Data Tidak Jadi dihapus");
+                    swal("Pasien tidak jadi dinon-aktifkan");
                 }
                 });
         });

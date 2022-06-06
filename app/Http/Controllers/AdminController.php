@@ -6,6 +6,7 @@ use App\Models\Pasien;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
+use Alert;
 
 class AdminController extends Controller
 {
@@ -17,20 +18,20 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $data = Pasien::orderBy('created_at', 'desc')->get();
+        $data = Pasien::where('status', 'aktif')->orderBy('created_at', 'desc')->get();
         return view('admin.index', compact('data'));
     }
 
     public function getData()
     {
-        $data = Pasien::orderBy('created_at', 'DESC');
+        $data = Pasien::where('status', 'aktif')->orderBy('created_at', 'DESC');
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('aksi', function($row){
                             return 
-                            '<a href="#">
-                            <i class="bi bi-pencil-square" style="color:blue"></i> </a> 
+                            '<a href="'.route('admin-edit-pasien', $row->no_pasien).'">
+                            <i class="bi bi-pencil-square" style="color:blue"></i></a> 
                             <a class="btn-link-danger modal-deletetab1" href="#" data-id="'.$row->no_pasien.'">
-                            <i class="bi bi-trash" style="color:red"></i> </a>';
+                            <i class="bi bi-person-x" style="color:red;"></i></i> </a>';
                         })
                         ->rawColumns(['aksi'])
                         ->make(true);
@@ -75,9 +76,11 @@ class AdminController extends Controller
         $pasien->umur = $umur;
         $pasien->alamat = $alamat;
         $pasien->users_username = Auth::user()->username;
+        $pasien->status = "aktif";
         $pasien->save();
 
-        return back()->with('success', 'Pasien Berhasil Di Tambahkan');
+        Alert::success('Succes!', 'Pasien Berhasil Ditambah!');
+        return redirect()->route('admin.dashboard');
     }
 
     /**
@@ -100,6 +103,8 @@ class AdminController extends Controller
     public function edit($id)
     {
         //
+        $data = Pasien::where('no_pasien', $id)->where('status', 'aktif')->get();
+        return view('admin.edit', compact('data'));
     }
 
     /**
@@ -112,6 +117,19 @@ class AdminController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $nama = $request->input("nama");
+        $umur = $request->input("umur");
+        $alamat = $request->input("alamat");
+
+        $pasien = Pasien::where('no_pasien', $id)->first();
+        
+        $pasien->nama = $nama;
+        $pasien->umur = $umur;
+        $pasien->alamat = $alamat;
+        $pasien->save();
+
+        Alert::success('Succes!', 'Pasien Berhasil Diubah!');
+        return redirect()->route('admin.dashboard');
     }
 
     /**
@@ -123,5 +141,9 @@ class AdminController extends Controller
     public function destroy($id)
     {
         //
+        $data = Pasien::where('no_pasien', $id)->first();
+        $data->status = "non-aktif";
+        $data->save();
+        return redirect('/admin/home');
     }
 }

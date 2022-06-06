@@ -11,7 +11,7 @@ class Pasien extends Model
 
     protected $table = "pasien";
     protected $guarded = [];
-    protected $primaryKey = "pasien_id";
+    protected $primaryKey = "no_pasien";
     protected $keyTipe = "string";
 
    
