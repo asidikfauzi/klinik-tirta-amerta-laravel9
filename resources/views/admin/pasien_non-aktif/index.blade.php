@@ -15,8 +15,7 @@
 <div class="content">
     <hr>
     <div class="topnav mb-3">
-        <button onclick="window.location.href='{{route('admin-create-pasien')}}'" class="button button-submit">Tambah Pasien</button>
-        <table id="table-pasien" class="display table-pasien" style="width: 100%;">
+        <table id="table-pasien-non-aktif" class="display table-pasien" style="width: 100%;">
             <thead>
                 <tr>
                     <th>No. Pasien</th>
@@ -50,7 +49,7 @@
 
     function fetch_data(search='')
     {
-        $('#table-pasien').DataTable({
+        $('#table-pasien-non-aktif').DataTable({
 
             language: {
                 searchPlaceholder: 'Search...',
@@ -80,7 +79,7 @@
 
             ajax: {
 
-            url:"{{ route('admin.getdata') }}",
+            url:"{{ route('admin.non.getdata') }}",
 
             data: {
                 search : search,
@@ -106,19 +105,19 @@
             var judulid = $(this).attr('data-id');
             swal({
                 title: "Yakin?",
-                text: "kamu akan non-aktifkan pasien ini ?",
+                text: "kamu akan aktifkan pasien ini ?",
                 icon: "warning",
                 buttons: true,
                 dangerMode: true,
                 })
                 .then((willDelete) => {
                 if (willDelete) {
-                    window.location = "/admin/pasien/non-aktif/"+judulid+"" 
-                    swal("Pasien berhasil dinon-aktifkan", {
+                    window.location = "/admin/pasien/aktifkan/"+judulid+"" 
+                    swal("Pasien berhasil diaktifkan", {
                     icon: "success",
                     });
                 } else {
-                    swal("Pasien tidak jadi dinon-aktifkan");
+                    swal("Pasien tidak jadi diaktifkan");
                 }
                 });
         });

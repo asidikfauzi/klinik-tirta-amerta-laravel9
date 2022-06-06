@@ -90,7 +90,7 @@
           <li class="dropdown"><a href="#"><span>{{Auth()->user()->nama}}</span> </i></a>
             <ul>
               <li><a href="{{ route('admin.dashboard') }}">Daftar Pasien</a></li>
-              <li><a href="{{ route('admin.dashboard') }}">Pasien Non-aktif</a></li>
+              <li><a href="{{ route('admin.non.dashboard') }}">Pasien Non-aktif</a></li>
               <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
                 {{ csrf_field() }}
