@@ -66,6 +66,7 @@
         <ul>
           <li><a class="nav-link scrollto active" href="{{route('home')}}">Home</a></li>
           <li><a class="nav-link scrollto" href="#about">Profil</a></li>
+          <li><a class="nav-link scrollto" href="#clients">Mitra Kerja</a></li>
           <li><a class="nav-link scrollto" href="#services">Jadwal</a></li>
           <li><a class="nav-link scrollto" href="#team">Dokter</a></li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
@@ -180,7 +181,7 @@
 
         <div class="row">
           <div class="col-lg-6 order-1 order-lg-2">
-            <img src="assets/img/about.jpg" class="img-fluid" alt="">
+            <img src="{{asset('assets/img/tirta_amerta.png')}}" class="img-fluid" alt="">
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content">
             <h3>Klinik Tirta Amerta</h3>
@@ -337,14 +338,14 @@
       <div class="container">
 
         <div class="section-title">
-          <h2>Team</h2>
+          <h2>Dokter</h2>
           <p>Team Dokter Klinik Tirta Amerta :</p>
         </div>
 
         <div class="row">
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/dokter/dokter1.png" alt="" style="width:200px; height: 200px; border-radius: 50%;">
+              <img src="assets/img/team/dokter1.png" alt="" style="width:200px; height: 200px; border-radius: 50%;">
               <h4>Walter White</h4>
               <span>Chief Executive Officer</span>
               <p>
@@ -360,7 +361,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/dokter/dokter3.png" alt="" style="width:200px; height: 200px; border-radius: 50%;">
+              <img src="assets/img/team/dokter3.png" alt="" style="width:200px; height: 200px; border-radius: 50%;">
               <h4>Sarah Jhinson</h4>
               <span>Product Manager</span>
               <p>
@@ -376,7 +377,7 @@
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
-              <img src="assets/img/dokter/dokter2.png" alt="" style="width:200px; height: 200px; border-radius: 50%;">
+              <img src="assets/img/team/dokter2.png" alt="" style="width:200px; height: 200px; border-radius: 50%;">
               <h4>William Anderson</h4>
               <span>CTO</span>
               <p>
