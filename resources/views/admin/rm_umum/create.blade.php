@@ -23,14 +23,14 @@
                 <div class="card-header">{{ __('Tambah Pasien') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin-create-pasien') }}">
+                    <form method="POST" action="{{ route('admin.create.pasien.umum') }}">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="no_pasien" class="col-md-4 col-form-label text-md-end">{{ __('No. Pasien') }}</label>
 
                             <div class="col-md-6">
-                                <input id="no_pasien" type="number" class="form-control @error('no_pasien') is-invalid @enderror" name="no_pasien" value="{{ old('no_pasien')}}" required autocomplete="no_pasien" autofocus>
+                                <input id="no_pasien" type="number"  maxlength="4"  class="form-control @error('no_pasien') is-invalid @enderror" name="no_pasien" value="{{ old('no_pasien')}}" required autocomplete="no_pasien" autofocus>
                             </div>
                         </div>
                         <div class="row mb-3">
