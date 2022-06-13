@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use Alert;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -17,9 +18,19 @@ class AdminController extends Controller
      */
     public function index()
     {
-        //
         return view('admin.index');
     }
+
+    public function indexRmUmum()
+    {
+        return view('admin.rm_umum.index');
+    }
+
+    public function indexRmDony()
+    {
+        return view('admin.rm_dony.index');
+    }
+    
 
     // public function getData()
     // {
@@ -47,6 +58,12 @@ class AdminController extends Controller
         //
         $data = Pasien::select('no_pasien')->orderBy('created_at', 'desc')->first();
         return view('admin.create', compact('data'));
+    }
+
+    public function createPasienUmum()
+    {
+        //
+        return view('admin.rm_umum.create');
     }
 
     /**

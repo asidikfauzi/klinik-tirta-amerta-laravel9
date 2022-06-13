@@ -18,7 +18,7 @@
     <div class="topnav">
         <div class="column">
             <div class="card" style="background-color:#1E90FF;">
-                <a href="">
+                <a href="{{route('admin.dokter.umum.index')}}">
                     <img src="{{asset('assets/img/dokter_umum.png')}}" alt="dokter_umum" class="image-index">
                     <h1 style="color: white">Rekam Medik Dokter Umum</h1>
                 </a>
@@ -26,7 +26,7 @@
         </div>
         <div class="column">
             <div class="card" style="background-color:#228B22;">
-                <a href="">
+                <a href="{{route('admin.dokter.gigi.index')}}">
                     <img src="{{asset('assets/img/dokter_gigi.png')}}" alt="dokter_gigi" class="image-index">
                     <h1 style="color: white">Rekam Medik Dokter Gigi</h1>
                 </a>
@@ -43,87 +43,3 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-
-{{-- <script type="text/javascript">
-    $(document).ready(function(){
-
-    fetch_data();
-
-    function fetch_data(search='')
-    {
-        $('#table-pasien').DataTable({
-
-            language: {
-                searchPlaceholder: 'Search...',
-                sEmptyTable:   'Tidak ada data yang tersedia pada tabel ini',
-                sProcessing:   'Sedang memproses...',
-                // sLengthMenu:   'Tampilkan _MENU_ entri',
-                sZeroRecords:  'Tidak ditemukan data yang sesuai',
-                sInfo:         'Menampilkan _START_ sampai _END_ dari _TOTAL_ entri',
-                sInfoEmpty:    'Menampilkan 0 sampai 0 dari 0 entri',
-                sInfoFiltered: '(disaring dari _MAX_ entri keseluruhan)',
-                sInfoPostFix:  '',
-                sSearch:       '',
-                sUrl:          '',
-                oPaginate: {
-                sFirst:    'Pertama',
-                sPrevious: 'Sebelumnya',
-                sNext:     'Selanjutnya',
-                sLast:     'Terakhir'
-                }
-            },
-            paging: true,
-            // responsive: false,
-            // processing: true,
-            scrollX: true,
-            // filter : false,
-            lengthChange: false,
-
-            ajax: {
-
-            url:"{{ route('admin.getdata') }}",
-
-            data: {
-                search : search,
-            }
-
-            },
-
-            columns:[
-                    {data: 'no_pasien', name: 'no_pasien'},
-                    {data: 'nama', name: 'nama'},
-                    {data: 'umur', name: 'umur'},
-                    {data: 'alamat', name: 'alamat'},
-                    {data: 'status', name: 'status'},
-                    {data: 'aksi', name: 'aksi'},
-
-            ]
-
-            });
-
-        }
-
-        $("body").on("click", ".modal-deletetab1", function() {
-            var judulid = $(this).attr('data-id');
-            swal({
-                title: "Yakin?",
-                text: "kamu akan non-aktifkan pasien ini ?",
-                icon: "warning",
-                buttons: true,
-                dangerMode: true,
-                })
-                .then((willDelete) => {
-                if (willDelete) {
-                    window.location = "/admin/pasien/non-aktif/"+judulid+"" 
-                    swal("Pasien berhasil dinon-aktifkan", {
-                    icon: "success",
-                    });
-                } else {
-                    swal("Pasien tidak jadi dinon-aktifkan");
-                }
-                });
-        });
-
-
-    });
-</script> --}}
