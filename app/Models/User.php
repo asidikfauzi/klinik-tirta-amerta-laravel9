@@ -20,12 +20,9 @@ class User extends Authenticatable
 
     protected $table = "users";
     protected $guarded = [];
-    protected $primaryKey = "username";
+    protected $primaryKey = "no_pasien";
     protected $keyType = "string";
 
-    public function pasien()
-    {
-        return $this->hasMany(Pasien::class, "users_username", "username");
-    }
+
 
 }

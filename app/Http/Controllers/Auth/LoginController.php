@@ -32,7 +32,7 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {
-        return route('admin.dashboard');
+        return route('admin.index');
     }
 
     /**
@@ -47,16 +47,28 @@ class LoginController extends Controller
     
     public function login(Request $request)
     {
-        $username = $request->input('username');
+        $no_pasien = $request->input('no_pasien');
         $password = $request->input('password');
 
-        if(auth()->attempt(array('username'=>$username, 'password'=>$password)))
+        if(auth()->attempt(array('no_pasien'=>$no_pasien, 'password'=>$password)))
         {
-            return redirect()->route('admin.dashboard');   
+            if(auth()->user()->role == "admin")
+            {
+                return redirect()->route('admin.index'); 
+            }
+            else if(auth()->user()->role == "rm_dony")
+            {
+                return redirect()->route('rm_dony.index'); 
+            }
+            else if(auth()->user()->role == "rm_umum")
+            {
+                return redirect()->route('rm_umum.index'); 
+            }
+              
         }
         else
         {
-            return redirect()->route('login')->with('error', 'Username and password are wrong');
+            return redirect()->route('login')->with('error', 'No Pasien atau password salah');
         }
     }
 

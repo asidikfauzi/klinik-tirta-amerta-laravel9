@@ -18,25 +18,24 @@ class AdminController extends Controller
     public function index()
     {
         //
-        $data = Pasien::where('status', 'aktif')->orderBy('created_at', 'desc')->get();
-        return view('admin.index', compact('data'));
+        return view('admin.index');
     }
 
-    public function getData()
-    {
-        $data = Pasien::where('status', 'aktif')->orderBy('created_at', 'DESC');
-        return Datatables::of($data)->addIndexColumn()
-                        ->addColumn('aksi', function($row){
-                            return 
-                            '<a href="'.route('admin-edit-pasien', $row->no_pasien).'">
-                            <i class="bi bi-pencil-square" style="color:blue"></i></a> 
-                            <a class="btn-link-danger modal-deletetab1" href="#" data-id="'.$row->no_pasien.'">
-                            <i class="bi bi-person-x" style="color:red;"></i></i> </a>';
-                        })
-                        ->rawColumns(['aksi'])
-                        ->make(true);
+    // public function getData()
+    // {
+    //     $data = Pasien::where('status', 'aktif')->orderBy('created_at', 'DESC');
+    //     return Datatables::of($data)->addIndexColumn()
+    //                     ->addColumn('aksi', function($row){
+    //                         return 
+    //                         '<a href="'.route('admin-edit-pasien', $row->no_pasien).'">
+    //                         <i class="bi bi-pencil-square" style="color:blue"></i></a> 
+    //                         <a class="btn-link-danger modal-deletetab1" href="#" data-id="'.$row->no_pasien.'">
+    //                         <i class="bi bi-person-x" style="color:red;"></i></i> </a>';
+    //                     })
+    //                     ->rawColumns(['aksi'])
+    //                     ->make(true);
         
-    }
+    // }
 
     /**
      * Show the form for creating a new resource.

@@ -73,9 +73,9 @@
         <ul>
           <li><a class="nav-link scrollto" href="{{route('home')}}">Home</a></li>
           @if(\Auth::user())
-          <li class="dropdown"><a href="#"><span>{{Auth()->user()->nama}}</span> </i></a>
+          <li class="dropdown"><a href="#"><span>{{Auth::user()->no_pasien}}</span> </i></a>
             <ul>
-              <li><a href="{{ route('admin.dashboard') }}">Daftar Pasien</a></li>
+              <li><a href="{{ route('admin.index') }}">Daftar Pasien</a></li>
               <li><a href="{{ route('admin.non.dashboard') }}">Pasien Non-aktif</a></li>
               <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
@@ -103,24 +103,17 @@
   <!-- ======= Footer ======= -->
   <footer id="footer">
     <div class="container">
-      <h3>Green</h3>
-      <p>Et aut eum quis fuga eos sunt ipsa nihil. Labore corporis magni eligendi fuga maxime saepe commodi placeat.</p>
-      <div class="social-links">
-        <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-        <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+      <div class="container">
+        <h3>Tirta Amerta</h3>
+        <p>Klinik Tirta Amerta Kabupaten Sumenep.</p>
+        <div class="social-links">
+          <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
+          <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
+          <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
+          <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
+        </div>
       </div>
-      <div class="copyright">
-        &copy; Copyright <strong><span>Green</span></strong>. All Rights Reserved
-      </div>
-      <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/green-free-one-page-bootstrap-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
-      </div>
+      
     </div>
   </footer><!-- End Footer -->
 

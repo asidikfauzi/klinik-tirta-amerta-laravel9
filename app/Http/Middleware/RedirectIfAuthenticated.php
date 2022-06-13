@@ -22,8 +22,17 @@ class RedirectIfAuthenticated
         $guards = empty($guards) ? [null] : $guards;
 
         foreach ($guards as $guard) {
-            if (Auth::guard($guard)->check()) {
-                return redirect()->route('admin.dashboard');
+            if(Auth::guard($guard)->check() && Auth::user()->role == "admin")
+            {
+                return redirect()->route('admin.index');
+            }
+            elseif(Auth::guard($guard)->check() && Auth::user()->role == "rm_dony")
+            {
+                return redirect()->route('rm_dony.index');
+            }
+            elseif(Auth::guard($guard)->check() && Auth::user()->role == "rm_umum")
+            {
+                return redirect()->route('rm_umum.index');
             }
         }
 
