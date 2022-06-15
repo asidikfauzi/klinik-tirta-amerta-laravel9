@@ -36,8 +36,11 @@ class AdminController extends Controller
     
     public function getDataRmUmum()
     {
-        $data = RmUmum::join('users', 'users.no_pasien', '=', 'rm_umum.users_no_pasien')->orderBy('users.no_pasien', 'DESC');
-        dd($data);
+        $data = RmUmum::select('users.no_pasien', 'rm_umum.nama_pasien', 'rm_umum.no_bpjs_ktp', 'rm_umum.tempat',
+                                DB::raw("DATE_FORMAT(rm_umum.tgl_lahir, '%d-%b-%Y') as tgl_lahir"), 'rm_umum.umur', 'rm_umum.alamat', 'rm_umum.no_telepone', 
+                                'rm_umum.status_perkawinan', 'rm_umum.agama', 'rm_umum.pekerjaan', 'rm_umum.pendidikan')
+                        ->join('users', 'users.no_pasien', '=', 'rm_umum.users_no_pasien')
+                        ->orderBy('users.no_pasien', 'DESC');
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('aksi', function($row){
                             return 

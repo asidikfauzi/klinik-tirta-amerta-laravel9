@@ -13,11 +13,18 @@
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 
 @section('content')
+<style>
+    th, td { white-space: nowrap; }
+    div.dataTables_wrapper {
+        margin: 0 auto;
+    }
+    tr { height: 50px; }
+</style>
 <div class="content">
     <hr>
     <div class="topnav mb-3">
         <button onclick="window.location.href='{{route('admin.create.pasien.umum')}}'" class="button button-submit">Tambah Pasien Umum</button>
-        <table id="table-pasien" class="display table-pasien" style="width: 100%;">
+        <table id="table-pasien" class="display table-pasien stripe row-border order-column" style="width: 100%;" >
             <thead>
                 <tr>
                     <th>No. Pasien</th>
@@ -49,3 +56,93 @@
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.21/js/dataTables.bootstrap4.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+    fetch_data();
+
+    function fetch_data(search='')
+    {
+        $('.table-pasien').DataTable({
+
+            language: {
+                searchPlaceholder: 'Search...',
+                sEmptyTable:   'Tidak ada data yang tersedia pada tabel ini',
+                sProcessing:   'Sedang memproses...',
+                // sLengthMenu:   'Tampilkan _MENU_ entri',
+                sZeroRecords:  'Tidak ditemukan data yang sesuai',
+                sInfo:         'Menampilkan _START_ sampai _END_ dari _TOTAL_ entri',
+                sInfoEmpty:    'Menampilkan 0 sampai 0 dari 0 entri',
+                sInfoFiltered: '(disaring dari _MAX_ entri keseluruhan)',
+                sInfoPostFix:  '',
+                sSearch:       '',
+                sUrl:          '',
+                oPaginate: {
+                sFirst:    'Pertama',
+                sPrevious: 'Sebelumnya',
+                sNext:     'Selanjutnya',
+                sLast:     'Terakhir'
+                }
+            },
+            paging: false,
+            responsive: true,
+            scrollY:"300px",
+            scrollX: true,
+            filter : true,
+            lengthChange: false,
+            scrollCollapse: true,
+            fixedColumns:   {
+                heightMatch: 'none'
+            },
+
+            ajax: {
+
+            url:"{{ route('admin.getdata.pasien.umum') }}",
+
+            data: {
+                search : search,
+            }
+
+            },
+            columns:[
+                    {data: 'no_pasien', name: 'no_pasien'},
+                    {data: 'nama_pasien', name: 'nama_pasien'},
+                    {data: 'no_bpjs_ktp', name: 'no_bpjs_ktp'},
+                    {data: 'tgl_lahir', name: 'tgl_lahir'},
+                    {data: 'umur', name: 'umur'},
+                    {data: 'alamat', name: 'alamat'},
+                    {data: 'no_telepone', name: 'no_telepone'},
+                    {data: 'status_perkawinan', name: 'status_perkawinan'},
+                    {data: 'agama', name: 'agama'},
+                    {data: 'pekerjaan', name: 'pekerjaan'},
+                    {data: 'pendidikan', name: 'pendidikan'},
+                    {data: 'aksi', name: 'aksi'}
+            ]
+
+            });
+
+        }
+
+        $("body").on("click", ".modal-deletetab1", function() {
+            var judulid = $(this).attr('data-id');
+            swal({
+                title: "Yakin?",
+                text: "kamu akan menghapus data ini ?",
+                icon: "warning",
+                buttons: ["Batal", "OK"],
+                dangerMode: true,
+                })
+                .then((willDelete) => {
+                if (willDelete) {
+                    window.location = "/admin/delete/"+judulid+"" 
+                    swal("Data berhasil dihapus", {
+                    icon: "success",
+                    });
+                } else {
+                    swal("Data Tidak Jadi dihapus");
+                }
+                });
+        });
+    });
+</script>
