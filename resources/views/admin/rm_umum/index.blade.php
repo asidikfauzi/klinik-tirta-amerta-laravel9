@@ -29,16 +29,17 @@
                 <tr>
                     <th>No. Pasien</th>
                     <th>Nama Pasien</th>
-                    <th>No. BPJS</th>
-                    <th>TTL</th>
+                    <th>No. BPJS/KTP</th>
+                    <th>Tanggal Lahir</th>
                     <th>Umur</th>
                     <th>Alamat</th>
                     <th>Nomor Telepone</th>
                     <th>Status Perkawinan</th>
                     <th>Agama</th>
-                    <th>Pekerjaan</th>
                     <th>Pendidikan</th>
-                    <th>Aksi</th>
+                    <th>Pekerjaan</th>
+                    <th>RM</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -115,8 +116,9 @@
                     {data: 'no_telepone', name: 'no_telepone'},
                     {data: 'status_perkawinan', name: 'status_perkawinan'},
                     {data: 'agama', name: 'agama'},
-                    {data: 'pekerjaan', name: 'pekerjaan'},
                     {data: 'pendidikan', name: 'pendidikan'},
+                    {data: 'pekerjaan', name: 'pekerjaan'},
+                    {data: 'download', name: 'download'},
                     {data: 'aksi', name: 'aksi'}
             ]
 

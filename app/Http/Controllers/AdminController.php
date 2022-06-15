@@ -42,14 +42,17 @@ class AdminController extends Controller
                         ->join('users', 'users.no_pasien', '=', 'rm_umum.users_no_pasien')
                         ->orderBy('users.no_pasien', 'DESC');
         return Datatables::of($data)->addIndexColumn()
+                        ->addColumn('download', function($row){
+                            return 
+                            '<a href="'.route('admin-edit-pasien', $row->no_pasien).'">
+                            <i class="bi bi-eye" style="color:green;"></i></a>';
+                        })
                         ->addColumn('aksi', function($row){
                             return 
                             '<a href="'.route('admin-edit-pasien', $row->no_pasien).'">
-                            <i class="bi bi-pencil-square" style="color:blue"></i></a> 
-                            <a class="btn-link-danger modal-deletetab1" href="#" data-id="'.$row->no_pasien.'">
-                            <i class="bi bi-person-x" style="color:red;"></i></i> </a>';
+                            <i class="bi bi-pencil-square" style="color:blue"></i></a>';
                         })
-                        ->rawColumns(['aksi'])
+                        ->rawColumns(['download','aksi'])
                         ->make(true);
         
     }
@@ -167,7 +170,6 @@ class AdminController extends Controller
             $rm_umum->agama = $agama;
             $rm_umum->pekerjaan = $pekerjaan;
             $rm_umum->pendidikan = $pendidikan;
-            $rm_umum->file_rm = "Kosong";
             $rm_umum->users_no_pasien = $no_pasien;
             $rm_umum->save();
 

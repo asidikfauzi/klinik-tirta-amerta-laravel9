@@ -37,6 +37,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::post('pasien/edit/{id}', [App\Http\Controllers\AdminController::class, 'update'])->name('admin-edit-pasien');
     Route::get('pasien/non-aktif/{id}', [App\Http\Controllers\AdminController::class, 'destroy'])->name('admin-non-aktif-pasien');
 
+    
+    
+    
+    
     Route::get('non-aktif', [App\Http\Controllers\NonAktifController::class, 'index'])->name('admin.non.dashboard');
     Route::get('non-aktif/getdata', [App\Http\Controllers\NonAktifController::class, 'getData'])->name('admin.non.getdata');
     Route::get('pasien/aktifkan/{id}', [App\Http\Controllers\NonAktifController::class, 'aktifkan'])->name('admin-aktifkan-pasien');
