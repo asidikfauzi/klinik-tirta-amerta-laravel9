@@ -26,6 +26,8 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::get('pasien/umum/create', [App\Http\Controllers\AdminController::class, 'createPasienUmum'])->name('admin.create.pasien.umum');
     Route::post('pasien/umum/create', [App\Http\Controllers\AdminController::class, 'storePasienUmum'])->name('admin.create.pasien.umum');
     Route::get('pasien/getdata', [App\Http\Controllers\AdminController::class, 'getDataRmUmum'])->name('admin.getdata.pasien.umum');
+    Route::get('pasien/umum/edit/{id}', [App\Http\Controllers\AdminController::class, 'editRmUmum'])->name('admin.edit.pasien.umum');
+    Route::post('pasien/umum/edit/{id}', [App\Http\Controllers\AdminController::class, 'updateRmUmum'])->name('admin.edit.pasien.umum');
 
     Route::get('rekam-medik/dokter-gigi', [App\Http\Controllers\AdminController::class, 'indexRmDony'])->name('admin.dokter.gigi.index');
     

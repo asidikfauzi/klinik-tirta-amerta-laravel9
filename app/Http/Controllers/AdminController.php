@@ -49,7 +49,7 @@ class AdminController extends Controller
                         })
                         ->addColumn('aksi', function($row){
                             return 
-                            '<a href="'.route('admin-edit-pasien', $row->no_pasien).'">
+                            '<a href="'.route('admin.edit.pasien.umum', $row->no_pasien).'">
                             <i class="bi bi-pencil-square" style="color:blue"></i></a>';
                         })
                         ->rawColumns(['download','aksi'])
@@ -208,6 +208,19 @@ class AdminController extends Controller
         //
         $data = Pasien::where('no_pasien', $id)->where('status', 'aktif')->get();
         return view('admin.edit', compact('data'));
+    }
+
+    public function editRmUmum($id)
+    {
+        //
+        $data = RmUmum::where('users_no_pasien', $id)->get();
+        return view('admin.rm_umum.edit', compact('data'));
+    }
+
+    public function editRmDony($id)
+    {
+        //
+       
     }
 
     /**
