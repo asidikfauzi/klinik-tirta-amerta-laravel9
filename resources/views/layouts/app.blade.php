@@ -91,10 +91,10 @@
       <div class="carousel-inner" role="listbox">
 
         <!-- Slide 1 -->
-        <div class="carousel-item active" style="background-image: url({{asset('assets/img/slide/slide-1.jpg')}})">
+        <div class="carousel-item active" style="background-image: url({{asset('assets/img/home.jpg')}})">
           <div class="carousel-container">
             <div class="container">
-              <h2 class="animate__animated animate__fadeInDown">Welcome to <span>Klinik Tirta Amerta    </span></h2>
+              <h2 class="animate__animated animate__fadeInDown">Selamat Datang Di <span>Klinik Tirta Amerta    </span></h2>
               <p class="animate__animated animate__fadeInUp">Jl. Adirasa No.15, Kothe, Kolor, Kec. Kota Sumenep, Kabupaten Sumenep, Jawa Timur 69417</p>
               <a href="#about" class="btn-get-started animate__animated animate__fadeInUp scrollto">Read More</a>
             </div>

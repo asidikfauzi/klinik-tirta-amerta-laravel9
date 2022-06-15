@@ -25,7 +25,10 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::get('rekam-medik/dokter-umum', [App\Http\Controllers\AdminController::class, 'indexRmUmum'])->name('admin.dokter.umum.index');
     Route::get('pasien/umum/create', [App\Http\Controllers\AdminController::class, 'createPasienUmum'])->name('admin.create.pasien.umum');
     Route::post('pasien/umum/create', [App\Http\Controllers\AdminController::class, 'storePasienUmum'])->name('admin.create.pasien.umum');
+    Route::get('pasien/getdata', [App\Http\Controllers\AdminController::class, 'getDataRmUmum'])->name('admin.getdata.pasien.umum');
+
     Route::get('rekam-medik/dokter-gigi', [App\Http\Controllers\AdminController::class, 'indexRmDony'])->name('admin.dokter.gigi.index');
+    
 
     Route::get('home/getdata', [App\Http\Controllers\AdminController::class, 'getData'])->name('admin.getdata');
     Route::get('pasien/create', [App\Http\Controllers\AdminController::class, 'create'])->name('admin-create-pasien');
@@ -39,7 +42,7 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::get('pasien/aktifkan/{id}', [App\Http\Controllers\NonAktifController::class, 'aktifkan'])->name('admin-aktifkan-pasien');
 });
 
-Route::get('/', function () {
+Route::get('/home', function () {
     return view('welcome');
 })->name('home');
 
