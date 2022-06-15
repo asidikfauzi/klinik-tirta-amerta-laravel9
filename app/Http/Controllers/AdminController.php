@@ -248,6 +248,44 @@ class AdminController extends Controller
         return redirect()->route('admin.dashboard');
     }
 
+    public function updateRmUmum(Request $request, $id)
+    {
+        //
+        
+        $nama_pasien = $request->input('nama_pasien');
+        $no_bpjs = $request->input('no_bpjs');
+        $tempat = $request->input('tempat');
+        $tgl_lahir = $request->input('tgl_lahir');
+        $umur = $request->input('umur');
+        $alamat = $request->input('alamat');
+        $no_telepone = $request->input('no_telepone');
+        $status_perkawinan = $request->input('status_perkawinan');
+        $agama = $request->input('agama');
+        $pekerjaan = $request->input('pekerjaan');
+        $pendidikan = $request->input('pendidikan');
+        
+        $rm_umum = RmUmum::where('users_no_pasien', $id)->first();
+    
+        $rm_umum->nama_pasien = $nama_pasien;
+        $rm_umum->no_bpjs_ktp = $no_bpjs;
+        $rm_umum->tempat = $tempat;
+        $rm_umum->tgl_lahir = $tgl_lahir;
+        $rm_umum->umur = $umur;
+        $rm_umum->alamat = $alamat;
+        $rm_umum->no_telepone = $no_telepone;
+        $rm_umum->status_perkawinan = $status_perkawinan;
+        $rm_umum->agama = $agama;
+        $rm_umum->pekerjaan = $pekerjaan;
+        $rm_umum->pendidikan = $pendidikan;
+        $rm_umum->save();
+
+
+       
+        Alert::success('Succes!', 'Pasien Umum Berhasil Diubah!');
+        return redirect('/admin/rekam-medik/dokter-umum');
+    }
+
+
     /**
      * Remove the specified resource from storage.
      *
