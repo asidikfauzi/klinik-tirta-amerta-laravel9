@@ -11,6 +11,7 @@ use App\Models\RmUmum;
 use App\Models\User;
 use DB;
 use Illuminate\Support\Facades\Hash;
+use App\Export\RmUmumExport;
 
 class AdminController extends Controller
 {
@@ -36,7 +37,7 @@ class AdminController extends Controller
     
     public function getDataRmUmum()
     {
-        $data = RmUmum::select('users.no_pasien', 'rm_umum.nama_pasien', 'rm_umum.no_bpjs_ktp', 'rm_umum.tempat',
+        $data = RmUmum::select('users.no_pasien', 'rm_umum.id', 'rm_umum.nama_pasien', 'rm_umum.no_bpjs_ktp', 'rm_umum.tempat',
                                 DB::raw("DATE_FORMAT(rm_umum.tgl_lahir, '%d-%b-%Y') as tgl_lahir"), 'rm_umum.umur', 'rm_umum.alamat', 'rm_umum.no_telepone', 
                                 'rm_umum.status_perkawinan', 'rm_umum.agama', 'rm_umum.pekerjaan', 'rm_umum.pendidikan')
                         ->join('users', 'users.no_pasien', '=', 'rm_umum.users_no_pasien')
@@ -44,7 +45,7 @@ class AdminController extends Controller
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('download', function($row){
                             return 
-                            '<a href="'.route('admin-edit-pasien', $row->no_pasien).'">
+                            '<a href="'.route('admin.file.pasien.umum', $row->no_pasien).'">
                             <i class="bi bi-eye" style="color:green;"></i></a>';
                         })
                         ->addColumn('aksi', function($row){
@@ -284,6 +285,24 @@ class AdminController extends Controller
         Alert::success('Succes!', 'Pasien Umum Berhasil Diubah!');
         return redirect('/admin/rekam-medik/dokter-umum');
     }
+
+
+
+    
+    public function download()
+    {
+        $download = RmUmumExport::getLinkDownloadUmum();
+        return response()->download($download);
+    }
+
+
+    public function file($id)
+    {
+        $data = RmUmum::where('users_no_pasien', $id)->get();
+        return view('admin.rm_umum.file.index', compact('data'));
+    }
+
+
 
 
     /**
