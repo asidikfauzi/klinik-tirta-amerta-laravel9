@@ -332,9 +332,8 @@ class AdminController extends Controller
 
     public function downloadFile($id)
     {
-        $file = FileRmUmum::where('file_rm', $id)->get();
+        $file = FileRmUmum::where('file_rm', $id)->first();
         $download = RmUmumExport::getLinkDownloadPasien($file->file_rm);
-        dd($download);
         return response()->download($download);
     }
 
