@@ -4,11 +4,12 @@ namespace App\Export;
 
 class RmUmumExport
 {
-    public static function uploadImageStore($fileImage, $nama)
+    public static function uploadFileUmum($fileImage)
     {
       $ext = $fileImage->getClientOriginalExtension();
-      $name = "rm_umum_".$nama."_".date('Y-m-d H:i:s').".".$ext;
-      $fileImage->move(base_path("public//assets/img/storage/rm_umum/"), $name);
+      $name = "rm_umum_".rand().".".$ext;
+      $destinationPath= public_path("assets/img/storage/rm_umum");
+      $fileImage->move($destinationPath, $name);
 
       return $name;
     }

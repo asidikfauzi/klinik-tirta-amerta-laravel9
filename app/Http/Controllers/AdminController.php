@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Yajra\DataTables\DataTables;
 use Alert;
 use App\Models\RmUmum;
+use App\Models\FileRmUmum;
 use App\Models\User;
 use DB;
 use Illuminate\Support\Facades\Hash;
@@ -54,6 +55,25 @@ class AdminController extends Controller
                             <i class="bi bi-pencil-square" style="color:blue"></i></a>';
                         })
                         ->rawColumns(['download','aksi'])
+                        ->make(true);
+        
+    }
+
+    public function getFileDataRmUmum(Request $request)
+    {
+        $id = $request->session()->get('id');
+      
+        $data = FileRmUmum::select('file_rm_umum.file_rm', DB::raw("DATE_FORMAT(file_rm_umum.created_at, '%d-%b-%Y') as pembuatan"))
+                            ->where('rm_umum.users_no_pasien', $id)
+                            ->orderBy('file_rm_umum.created_at', 'ASC')
+                            ->join('rm_umum', 'rm_umum.id', '=', 'file_rm_umum.rm_umum_id');
+                            
+        return Datatables::of($data)->addIndexColumn()
+                        ->addColumn('download', function($row){
+                            return 
+                            '<a href="'.route('admin.downloadfile.pasien.umum',$row->file_rm).'" style="color:blue;">'.$row->file_rm.'</a>';
+                        })
+                        ->rawColumns(['download'])
                         ->make(true);
         
     }
@@ -186,6 +206,21 @@ class AdminController extends Controller
 
     }
 
+    public function storeFile(Request $request)
+    {
+        $file = $request->file('upload');
+        $no_pasien = $request->no_pasien;
+        $id = $request->input('id');
+        $uploadFile = RmUmumExport::uploadFileUmum($file);
+        $file_rm = new FileRmUmum();
+        $file_rm->file_rm = $uploadFile;
+        $file_rm->rm_umum_id = $id;
+        $file_rm->save();
+
+        Alert::success('Upload Success!', 'Rekam Medik Pasien Berhasil Ditambahkan !');
+        return back();
+    }
+
     
     /**
      * Display the specified resource.
@@ -295,11 +330,26 @@ class AdminController extends Controller
         return response()->download($download);
     }
 
+    public function downloadFile($id)
+    {
+        $file = FileRmUmum::where('file_rm', $id)->get();
+        $download = RmUmumExport::getLinkDownloadPasien($file->file_rm);
+        dd($download);
+        return response()->download($download);
+    }
 
-    public function file($id)
+
+    public function file(Request $request, $id)
     {
         $data = RmUmum::where('users_no_pasien', $id)->get();
+        $request->session()->put('id',$id);
+
         return view('admin.rm_umum.file.index', compact('data'));
+    }
+
+    public function uploadFile()
+    {
+        
     }
 
 

@@ -25,11 +25,14 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::get('rekam-medik/dokter-umum', [App\Http\Controllers\AdminController::class, 'indexRmUmum'])->name('admin.dokter.umum.index');
     Route::get('pasien/umum/create', [App\Http\Controllers\AdminController::class, 'createPasienUmum'])->name('admin.create.pasien.umum');
     Route::post('pasien/umum/create', [App\Http\Controllers\AdminController::class, 'storePasienUmum'])->name('admin.create.pasien.umum');
+    Route::post('pasien/umum/file/store', [App\Http\Controllers\AdminController::class, 'storeFile'])->name('admin.storefile.pasien.umum');
     Route::get('pasien/getdata', [App\Http\Controllers\AdminController::class, 'getDataRmUmum'])->name('admin.getdata.pasien.umum');
+    Route::get('pasien/getdata/pasien', [App\Http\Controllers\AdminController::class, 'getFileDataRmUmum'])->name('admin.filegetdata.pasien.umum');
     Route::get('pasien/umum/edit/{id}', [App\Http\Controllers\AdminController::class, 'editRmUmum'])->name('admin.edit.pasien.umum');
     Route::post('pasien/umum/edit/{id}', [App\Http\Controllers\AdminController::class, 'updateRmUmum'])->name('admin.edit.pasien.umum');
     Route::get('pasien/umum/file/{id}', [App\Http\Controllers\AdminController::class, 'file'])->name('admin.file.pasien.umum');
     Route::get('pasien/umum/download', [App\Http\Controllers\AdminController::class, 'download'])->name('admin.download.pasien.umum');
+    Route::get('pasien/umum/download/file/{id}', [App\Http\Controllers\AdminController::class, 'downloadFile'])->name('admin.downloadfile.pasien.umum');
 
     Route::get('rekam-medik/dokter-gigi', [App\Http\Controllers\AdminController::class, 'indexRmDony'])->name('admin.dokter.gigi.index');
     
