@@ -26,12 +26,5 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
-    
-    public function indexRmDony()
-    {
-        return view('admin.rm_dony.index');
-    }
-    
-
    
 }

@@ -25,6 +25,7 @@ class RmUmumController extends Controller
         //
         return view('admin.rm_umum.index');
     }
+    
     public function getDataRmUmum()
     {
         $data = RmUmum::select('users.no_pasien', 'rm_umum.id', 'rm_umum.nama_pasien', 'rm_umum.no_bpjs_ktp', 'rm_umum.tempat',
