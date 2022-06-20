@@ -26,12 +26,12 @@ class RmDonyController extends Controller
         return view('admin.rm_dony.index');
     }
 
-    public function getDataRmUmum()
+    public function getDataRmDony()
     {
-        $data = RmDony::select('users.no_pasien', 'rm_drg_gigi.id', 'rm_drg_gigi.nama_kk','rm_drg_gigi.nama_pasien',  'rm_drg_gigi.tempat',
-                                DB::raw("DATE_FORMAT(rm_drg_gigi.tgl_lahir, '%d-%b-%Y') as tgl_lahir"), 'rm_umum.alamat', 'rm_umum.no_telepone', 
-                                'rm_drg_gigi.pekerjaan')
-                        ->join('users', 'users.no_pasien', '=', 'rm_drg_gigi.users_no_pasien')
+        $data = RmDony::select('users.no_pasien', 'rm_drg_dony.id', 'rm_drg_dony.nama_kk','rm_drg_dony.nama_pasien', 'rm_drg_dony.jenis_kelamin', 'rm_drg_dony.tempat',
+                                DB::raw("DATE_FORMAT(rm_drg_dony.tgl_lahir, '%d-%b-%Y') as tgl_lahir"), 'rm_drg_dony.alamat', 'rm_drg_dony.no_telepone', 
+                                'rm_drg_dony.pekerjaan')
+                        ->join('users', 'users.no_pasien', '=', 'rm_drg_dony.users_no_pasien')
                         ->orderBy('users.no_pasien', 'DESC');
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('download', function($row){
@@ -155,6 +155,8 @@ class RmDonyController extends Controller
     public function edit($id)
     {
         //
+        $data = RmDony::where('users_no_pasien', $id)->get();
+        return view('admin.rm_dony.edit', compact('data'));
     }
 
     /**
@@ -167,6 +169,29 @@ class RmDonyController extends Controller
     public function update(Request $request, $id)
     {
         //
+        $nama_kk = $request->input('nama_kk');
+        $nama_pasien = $request->input('nama_pasien');
+        $jenis_kelamin = $request->input('jenis_kelamin');
+        $tempat = $request->input('tempat');
+        $tgl_lahir = $request->input('tgl_lahir');
+        $alamat = $request->input('alamat');
+        $no_telepone = $request->input('no_telepone');
+        $pekerjaan = $request->input('pekerjaan');
+
+        $rm_dony = RmDony::where('users_no_pasien', $id)->first();
+    
+        $rm_dony->nama_kk = $nama_kk;
+        $rm_dony->nama_pasien = $nama_pasien;
+        $rm_dony->jenis_kelamin = $jenis_kelamin;
+        $rm_dony->tempat = $tempat;
+        $rm_dony->tgl_lahir = $tgl_lahir;
+        $rm_dony->alamat = $alamat;
+        $rm_dony->no_telepone = $no_telepone;
+        $rm_dony->pekerjaan = $pekerjaan;
+        $rm_dony->save();
+
+        Alert::success('Succes!', 'Pasien Gigi Berhasil Diubah!');
+        return redirect('/admin/rekam-medik/dokter-gigi');
     }
 
     /**

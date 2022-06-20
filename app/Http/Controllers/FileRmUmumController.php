@@ -80,6 +80,18 @@ class FileRmUmumController extends Controller
     public function store(Request $request)
     {
         //
+        $file = $request->file('upload');
+        $no_pasien = $request->no_pasien;
+        $id = $request->input('id');
+        $uploadFile = RmUmumExport::uploadFileUmum($file);
+        $file_rm = new FileRmUmum();
+        $file_rm->file_rm = $uploadFile;
+        $file_rm->rm_umum_id = $id;
+        $file_rm->save();
+
+        Alert::success('Upload Success!', 'Rekam Medik Pasien Berhasil Ditambahkan !');
+        return back();
+        
     }
 
     /**

@@ -25,7 +25,7 @@ class RmUmumController extends Controller
         //
         return view('admin.rm_umum.index');
     }
-    
+
     public function getDataRmUmum()
     {
         $data = RmUmum::select('users.no_pasien', 'rm_umum.id', 'rm_umum.nama_pasien', 'rm_umum.no_bpjs_ktp', 'rm_umum.tempat',
@@ -140,20 +140,7 @@ class RmUmumController extends Controller
         }
     }
 
-    public function storeFile(Request $request)
-    {
-        $file = $request->file('upload');
-        $no_pasien = $request->no_pasien;
-        $id = $request->input('id');
-        $uploadFile = RmUmumExport::uploadFileUmum($file);
-        $file_rm = new FileRmUmum();
-        $file_rm->file_rm = $uploadFile;
-        $file_rm->rm_umum_id = $id;
-        $file_rm->save();
-
-        Alert::success('Upload Success!', 'Rekam Medik Pasien Berhasil Ditambahkan !');
-        return back();
-    }
+   
 
     /**
      * Display the specified resource.

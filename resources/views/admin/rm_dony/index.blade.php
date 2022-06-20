@@ -105,15 +105,12 @@
             },
             columns:[
                     {data: 'no_pasien', name: 'no_pasien'},
+                    {data: 'nama_kk', name: 'nama_kk'},
                     {data: 'nama_pasien', name: 'nama_pasien'},
-                    {data: 'no_bpjs_ktp', name: 'no_bpjs_ktp'},
+                    {data: 'jenis_kelamin', name: 'jenis_kelamin'},
                     {data: 'tgl_lahir', name: 'tgl_lahir'},
-                    {data: 'umur', name: 'umur'},
                     {data: 'alamat', name: 'alamat'},
                     {data: 'no_telepone', name: 'no_telepone'},
-                    {data: 'status_perkawinan', name: 'status_perkawinan'},
-                    {data: 'agama', name: 'agama'},
-                    {data: 'pendidikan', name: 'pendidikan'},
                     {data: 'pekerjaan', name: 'pekerjaan'},
                     {data: 'download', name: 'download'},
                     {data: 'aksi', name: 'aksi'}
