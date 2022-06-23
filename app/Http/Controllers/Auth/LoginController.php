@@ -47,10 +47,10 @@ class LoginController extends Controller
     
     public function login(Request $request)
     {
-        $no_pasien = $request->input('no_pasien');
+        $username = $request->input('username');
         $password = $request->input('password');
 
-        if(auth()->attempt(array('no_pasien'=>$no_pasien, 'password'=>$password)))
+        if(auth()->attempt(array('username'=>$username, 'password'=>$password)))
         {
             if(auth()->user()->role == "admin")
             {

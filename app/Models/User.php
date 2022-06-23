@@ -20,7 +20,7 @@ class User extends Authenticatable
 
     protected $table = "users";
     protected $guarded = [];
-    protected $primaryKey = "no_pasien";
+    protected $primaryKey = "username";
     protected $keyType = "string";
 
 
