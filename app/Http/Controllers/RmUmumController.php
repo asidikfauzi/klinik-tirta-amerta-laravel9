@@ -83,17 +83,15 @@ class RmUmumController extends Controller
         $pekerjaan = $request->input('pekerjaan');
         $pendidikan = $request->input('pendidikan');
         
-        $data = RmUmum::where('no_pasien', $no_pasien)->get()->toArray();
+        $data = RmUmum::where('id', $no_pasien)->get()->toArray();
         
         if(!empty($data))
         {
             return back()->with('failed', 'Nomor pasien sudah ada');
         }
-    
-        $hashPassword = Hash::make($password);;
 
         $rm_umum = new RmUmum();
-        $rm_umum->no_pasien = $no_pasien;
+        $rm_umum->id = $no_pasien;
         $rm_umum->nama_pasien = $nama_pasien;
         $rm_umum->no_bpjs_ktp = $no_bpjs;
         $rm_umum->tempat = $tempat;
@@ -105,7 +103,7 @@ class RmUmumController extends Controller
         $rm_umum->agama = $agama;
         $rm_umum->pekerjaan = $pekerjaan;
         $rm_umum->pendidikan = $pendidikan;
-        $rm_umum->users_no_pasien = $no_pasien;
+        $rm_umum->users_username = Auth::user()->username;
         $rm_umum->save();
 
         Alert::success('Succes!', 'Pasien Dokter Umum Berhasil Ditambah!');
