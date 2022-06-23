@@ -62,7 +62,7 @@ class LoginController extends Controller
             }
             else if(auth()->user()->role == "rm_umum")
             {
-                return redirect()->route('rm_umum.index'); 
+                return redirect()->route('umum.index'); 
             }
               
         }

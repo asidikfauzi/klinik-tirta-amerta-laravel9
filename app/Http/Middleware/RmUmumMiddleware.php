@@ -4,6 +4,7 @@ namespace App\Http\Middleware;
 
 use Closure;
 use Illuminate\Http\Request;
+use Auth;
 
 class RmUmumMiddleware
 {
@@ -18,6 +19,7 @@ class RmUmumMiddleware
     {
         if(Auth::check() && Auth::user()->role == "rm_umum")
         {
+            
             return $next($request);
         }
         else

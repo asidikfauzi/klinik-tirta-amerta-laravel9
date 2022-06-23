@@ -33,7 +33,7 @@ class RmUmumController extends Controller
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('download', function($row){
                             return 
-                            '<a href="'.route('admin.file.pasien.umum', $row->id).'">
+                            '<a href="#">
                             <i class="bi bi-eye" style="color:green;"></i></a>';
                         })
                         ->addColumn('aksi', function($row){
