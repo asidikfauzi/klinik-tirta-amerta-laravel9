@@ -31,15 +31,10 @@
                     <th>Nama Pasien</th>
                     <th>No. BPJS/KTP</th>
                     <th>Tanggal Lahir</th>
-                    <th>Umur</th>
                     <th>Alamat</th>
                     <th>Nomor Telepone</th>
-                    <th>Status Perkawinan</th>
-                    <th>Agama</th>
-                    <th>Pendidikan</th>
-                    <th>Pekerjaan</th>
                     <th>RM</th>
-                    <th>Edit</th>
+                    <th>Tambah/Edit</th>
                 </tr>
             </thead>
             <tbody>
@@ -111,13 +106,8 @@
                     {data: 'nama_pasien', name: 'nama_pasien'},
                     {data: 'no_bpjs_ktp', name: 'no_bpjs_ktp'},
                     {data: 'tgl_lahir', name: 'tgl_lahir'},
-                    {data: 'umur', name: 'umur'},
                     {data: 'alamat', name: 'alamat'},
                     {data: 'no_telepone', name: 'no_telepone'},
-                    {data: 'status_perkawinan', name: 'status_perkawinan'},
-                    {data: 'agama', name: 'agama'},
-                    {data: 'pendidikan', name: 'pendidikan'},
-                    {data: 'pekerjaan', name: 'pekerjaan'},
                     {data: 'download', name: 'download'},
                     {data: 'aksi', name: 'aksi'}
             ]
