@@ -102,7 +102,7 @@
 
             },
             columns:[
-                    {data: 'no_pasien', name: 'no_pasien'},
+                    {data: 'id', name: 'id'},
                     {data: 'nama_pasien', name: 'nama_pasien'},
                     {data: 'no_bpjs_ktp', name: 'no_bpjs_ktp'},
                     {data: 'tgl_lahir', name: 'tgl_lahir'},

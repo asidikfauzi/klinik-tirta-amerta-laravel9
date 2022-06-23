@@ -28,21 +28,19 @@ class RmUmumController extends Controller
 
     public function getDataRmUmum()
     {
-        $data = RmUmum::select('users.no_pasien', 'rm_umum.id', 'rm_umum.nama_pasien', 'rm_umum.no_bpjs_ktp',
-                                DB::raw("DATE_FORMAT(rm_umum.tgl_lahir, '%d-%b-%Y') as tgl_lahir"), 'rm_umum.alamat', 'rm_umum.no_telepone')
-                        ->join('users', 'users.no_pasien', '=', 'rm_umum.users_no_pasien')
-                        ->orderBy('users.no_pasien', 'DESC');
+        $data = RmUmum::select('id', 'nama_pasien', 'no_bpjs_ktp', DB::raw("DATE_FORMAT(tgl_lahir, '%d-%b-%Y') as tgl_lahir"), 'alamat', 'no_telepone')
+                        ->orderBy('id', 'DESC');
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('download', function($row){
                             return 
-                            '<a href="'.route('admin.file.pasien.umum', $row->no_pasien).'">
+                            '<a href="'.route('admin.file.pasien.umum', $row->id).'">
                             <i class="bi bi-eye" style="color:green;"></i></a>';
                         })
                         ->addColumn('aksi', function($row){
                             return 
-                            '<a href="'.route('admin.edit.pasien.umum', $row->no_pasien).'">
+                            '<a href="'.route('admin.edit.pasien.umum', $row->id).'">
                             <i class="bi bi-file-earmark-plus" style="color:green;"></i></a>
-                            <a href="'.route('admin.edit.pasien.umum', $row->no_pasien).'">
+                            <a href="'.route('admin.edit.pasien.umum', $row->id).'">
                             <i class="bi bi-pencil-square" style="color:blue"></i></a>';
                         })
                         ->rawColumns(['download','aksi'])
@@ -134,7 +132,7 @@ class RmUmumController extends Controller
     {
         //
          //
-         $data = RmUmum::where('users_no_pasien', $id)->get();
+         $data = RmUmum::where('id', $id)->get();
          return view('admin.rm_umum.edit', compact('data'));
     }
 
