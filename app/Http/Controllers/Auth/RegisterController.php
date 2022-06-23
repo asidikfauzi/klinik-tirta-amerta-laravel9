@@ -9,6 +9,7 @@ use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Alert;
 
 class RegisterController extends Controller
 {
@@ -72,12 +73,12 @@ class RegisterController extends Controller
     
     public function register(Request $request)
     {
-        $nama = $request->input('nama');
         $username = $request->input('username');
         $password = $request->input('password');
         $confirmpas = $request->input('password_confirmation');
+        $role = $request->input('role');
 
-        if(empty($nama) || empty($username) || empty($password))
+        if(empty($username) || empty($password))
         {
             return back()->with('failed', 'please fill your data')->withInput();
         }
@@ -99,12 +100,13 @@ class RegisterController extends Controller
         $hashPassword = Hash::make($password);
 
         $users = new User();
-        $users->nama = $nama;
         $users->username = $username;
         $users->password = $hashPassword;
+        $users->role = $role;
         $users->save();
 
-        return back()->with('success', 'Data succesfully saved');
+        Alert::success('Success!', 'Dokter Berhasil Ditambahkan !');
+        return back();
 
     }
 }

@@ -15,11 +15,12 @@ use Illuminate\Support\Facades\Route;
 */
 
 Auth::routes();
+ //register admin 
+ 
 
 Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
-    //register admin 
-    // Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
-    // Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
+    Route::get('register', [App\Http\Controllers\Auth\RegisterController::class, 'index'])->name('register');
+    Route::post('register', [App\Http\Controllers\Auth\RegisterController::class, 'register'])->name('register');
 
     Route::get('home', [App\Http\Controllers\AdminController::class, 'index'])->name('admin.index');
     

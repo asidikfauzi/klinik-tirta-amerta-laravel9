@@ -71,8 +71,6 @@ class RmUmumController extends Controller
     {
         //
         $no_pasien = $request->input('no_pasien');
-        $password = $request->input('password');
-        $confirm_password = $request->input('confirm_password');
         $nama_pasien = $request->input('nama_pasien');
         $no_bpjs = $request->input('no_bpjs');
         $tempat = $request->input('tempat');
@@ -85,60 +83,34 @@ class RmUmumController extends Controller
         $pekerjaan = $request->input('pekerjaan');
         $pendidikan = $request->input('pendidikan');
         
-        $data = User::where('no_pasien', $no_pasien)->get()->toArray();
+        $data = RmUmum::where('no_pasien', $no_pasien)->get()->toArray();
         
-            
         if(!empty($data))
         {
             return back()->with('failed', 'Nomor pasien sudah ada');
         }
+    
+        $hashPassword = Hash::make($password);;
 
-        if(strlen($password) < 8)
-        {
-            return back()->with('failed', 'password minimal 8 karakter');
-        }
+        $rm_umum = new RmUmum();
+        $rm_umum->no_pasien = $no_pasien;
+        $rm_umum->nama_pasien = $nama_pasien;
+        $rm_umum->no_bpjs_ktp = $no_bpjs;
+        $rm_umum->tempat = $tempat;
+        $rm_umum->tgl_lahir = $tgl_lahir;
+        $rm_umum->umur = $umur;
+        $rm_umum->alamat = $alamat;
+        $rm_umum->no_telepone = $no_telepone;
+        $rm_umum->status_perkawinan = $status_perkawinan;
+        $rm_umum->agama = $agama;
+        $rm_umum->pekerjaan = $pekerjaan;
+        $rm_umum->pendidikan = $pendidikan;
+        $rm_umum->users_no_pasien = $no_pasien;
+        $rm_umum->save();
+
+        Alert::success('Succes!', 'Pasien Dokter Umum Berhasil Ditambah!');
+        return redirect('/admin/rekam-medik/dokter-umum');
         
-        if($password != $confirm_password)
-        {
-            return back()->with('failed', 'Password tidak sama.');
-        }
-
-        $create = DB::transaction(function() use ($no_pasien, $password, $nama_pasien, $no_bpjs, $tempat,
-                                                    $tgl_lahir, $umur, $alamat, $no_telepone, $status_perkawinan,
-                                                    $agama, $pekerjaan, $pendidikan){
-
-            $hashPassword = Hash::make($password);;
-
-            $user = new User();
-            $user->no_pasien = $no_pasien;
-            $user->password = $hashPassword;
-            $user->role = "rm_umum";
-            $user->save();
-
-            $rm_umum = new RmUmum();
-            $rm_umum->nama_pasien = $nama_pasien;
-            $rm_umum->no_bpjs_ktp = $no_bpjs;
-            $rm_umum->tempat = $tempat;
-            $rm_umum->tgl_lahir = $tgl_lahir;
-            $rm_umum->umur = $umur;
-            $rm_umum->alamat = $alamat;
-            $rm_umum->no_telepone = $no_telepone;
-            $rm_umum->status_perkawinan = $status_perkawinan;
-            $rm_umum->agama = $agama;
-            $rm_umum->pekerjaan = $pekerjaan;
-            $rm_umum->pendidikan = $pendidikan;
-            $rm_umum->users_no_pasien = $no_pasien;
-            $rm_umum->save();
-
-            return "Berhasil";
-
-        });
-
-        if($create)
-        {
-            Alert::success('Succes!', 'Pasien Dokter Umum Berhasil Ditambah!');
-            return redirect('/admin/rekam-medik/dokter-umum');
-        }
     }
 
    

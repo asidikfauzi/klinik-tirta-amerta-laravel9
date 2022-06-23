@@ -1,6 +1,7 @@
 @extends('layouts.login')
 
 @section('content')
+<section class="hero">
 <div class="container">
     @if (session('success'))
         <div class="alert alert-success">
@@ -20,18 +21,14 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
-
                         <div class="row mb-3">
-                            <label for="name" class="col-md-4 col-form-label text-md-end">{{ __('Nama') }}</label>
+                            <label for="role" class="col-md-4 col-form-label text-md-end"></label>
 
-                            <div class="col-md-6">
-                                <input id="nama" type="text" class="form-control @error('nama') is-invalid @enderror" name="nama" value="{{ old('nama') }}" required autocomplete="nama" autofocus>
-
-                                @error('nama')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
+                            <div class="col-md-6" >
+                                <select name="role" id="role" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role') }}" required autocomplete="role" autofocus>
+                                    <option value="rm_umum">Dokter Umum</option>
+                                    <option value="rm_dony">Dokter Gigi</option>
+                                  </select>
                             </div>
                         </div>
 
@@ -92,4 +89,5 @@
         </div>
     </div>
 </div>
+</section>
 @endsection

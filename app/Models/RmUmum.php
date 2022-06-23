@@ -11,4 +11,7 @@ class RmUmum extends Model
 
     protected $table = "rm_umum";
     protected $guarded = [];
+    protected $primaryKey = "no_pasien";
+    protected $keyType = "string";
+
 }

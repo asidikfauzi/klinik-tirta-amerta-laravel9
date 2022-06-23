@@ -18,7 +18,7 @@
         </div>
     @endif
     <div class="row justify-content-center">
-        <div class="col-md-12">
+        <div class="col-md-10">
             <div class="card">
                 <div class="card-header"><b>{{ __('TAMBAH PASIEN REKAM MEDIK DOKTER UMUM') }}</b></div>
 
@@ -32,22 +32,6 @@
                                 <input id="no_pasien" type="number"  maxlength="4"  class="form-control @error('no_pasien') is-invalid @enderror" name="no_pasien" placeholder="0000" value="{{ old('no_pasien')}}" required autocomplete="no_pasien" autofocus>
                             </div>
                         </div>
-                        <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password')}}" placeholder="Minimal 8 Karakter" required autocomplete="password" autofocus>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="confirm_password" class="col-md-4 col-form-label text-md-end">{{ __('Confirm-Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="confirm_password" type="password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" placeholder="Minimal 8 Karakter" value="{{ old('confirm_password')}}" required autocomplete="confirm_password" autofocus>
-                            </div>
-                        </div>
-                        <hr>
-                        <label for="identitas"><b>Identitas Pasien</b></label>
                         <div class="row mb-3 mt-4">
                             <label for="nama_pasien" class="col-md-4 col-form-label text-md-end">{{ __('Nama Pasien') }}</label>
 

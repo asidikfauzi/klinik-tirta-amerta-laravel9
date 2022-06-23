@@ -11,5 +11,7 @@ class RmDony extends Model
 
     protected $table = "rm_drg_dony";
     protected $guarded = [];
+    protected $primaryKey = "no_pasien";
+    protected $keyType = "string";
 
 }
