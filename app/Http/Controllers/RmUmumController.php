@@ -158,7 +158,7 @@ class RmUmumController extends Controller
         $pekerjaan = $request->input('pekerjaan');
         $pendidikan = $request->input('pendidikan');
         
-        $rm_umum = RmUmum::where('users_no_pasien', $id)->first();
+        $rm_umum = RmUmum::where('id', $id)->first();
     
         $rm_umum->nama_pasien = $nama_pasien;
         $rm_umum->no_bpjs_ktp = $no_bpjs;
