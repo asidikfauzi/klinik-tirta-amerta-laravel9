@@ -73,9 +73,9 @@
         <ul>
           <li><a class="nav-link scrollto" href="{{route('home')}}">Home</a></li>
           @if(\Auth::user())
-          <li class="dropdown"><a href="#"><span>{{Auth::user()->no_pasien}}</span> </i></a>
+          <li class="dropdown"><a href="#"><span>{{Auth::user()->username}}</span> </i></a>
             <ul>
-              <li><a href="{{ route('admin.index') }}">Daftar Pasien</a></li>
+              <li><a href="{{ route('admin.index') }}">Rekam Medik</a></li>
               <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
                 {{ csrf_field() }}

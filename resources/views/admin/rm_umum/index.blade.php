@@ -34,7 +34,7 @@
                     <th>Alamat</th>
                     <th>Nomor Telepone</th>
                     <th>RM</th>
-                    <th>Tambah/Edit</th>
+                    <th>Edit</th>
                 </tr>
             </thead>
             <tbody>

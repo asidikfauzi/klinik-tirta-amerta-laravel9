@@ -39,8 +39,6 @@ class RmUmumController extends Controller
                         ->addColumn('aksi', function($row){
                             return 
                             '<a href="'.route('admin.edit.pasien.umum', $row->id).'">
-                            <i class="bi bi-file-earmark-plus" style="color:green;"></i></a>
-                            <a href="'.route('admin.edit.pasien.umum', $row->id).'">
                             <i class="bi bi-pencil-square" style="color:blue"></i></a>';
                         })
                         ->rawColumns(['download','aksi'])
