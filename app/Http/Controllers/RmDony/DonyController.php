@@ -4,6 +4,15 @@ namespace App\Http\Controllers\RmDony;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use App\Models\RmDony;
+use App\Models\FileRmDony;
+use App\Models\User;
+use Illuminate\Support\Facades\Hash;
+use App\Export\RmUmumExport;
+use Yajra\DataTables\DataTables;
+use Alert;
+use DB;
 
 class DonyController extends Controller
 {
@@ -17,6 +26,29 @@ class DonyController extends Controller
         //
         return view('rm_dony.index');
     }
+
+    public function getDataRmDony()
+    {
+        $data = RmDony::select('id', 'nama_kk', 'nama_pasien', 'jenis_kelamin', 'tempat',
+                                DB::raw("DATE_FORMAT(tgl_lahir, '%d-%b-%Y') as tgl_lahir"), 'alamat', 'no_telepone', 
+                                'pekerjaan')
+                        ->orderBy('id', 'DESC');
+        return Datatables::of($data)->addIndexColumn()
+                        ->addColumn('download', function($row){
+                            return 
+                            '<a href="#">
+                            <i class="bi bi-eye" style="color:green;"></i></a>';
+                        })
+                        ->addColumn('aksi', function($row){
+                            return 
+                            '<a href="'.route('dony.create', $row->id).'">
+                            <i class="bi bi-pencil-square" style="color:blue"></i></a>';
+                        })
+                        ->rawColumns(['download','aksi'])
+                        ->make(true);
+        
+    }
+
 
     /**
      * Show the form for creating a new resource.
