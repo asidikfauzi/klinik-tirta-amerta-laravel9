@@ -28,11 +28,11 @@ class RedirectIfAuthenticated
             }
             elseif(Auth::guard($guard)->check() && Auth::user()->role == "rm_dony")
             {
-                return redirect()->route('rm_dony.index');
+                return redirect()->route('dony.index');
             }
             elseif(Auth::guard($guard)->check() && Auth::user()->role == "rm_umum")
             {
-                return redirect()->route('rm_umum.index');
+                return redirect()->route('umum.index');
             }
         }
 

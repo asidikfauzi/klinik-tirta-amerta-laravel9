@@ -58,7 +58,7 @@ class LoginController extends Controller
             }
             else if(auth()->user()->role == "rm_dony")
             {
-                return redirect()->route('rm_dony.index'); 
+                return redirect()->route('dony.index'); 
             }
             else if(auth()->user()->role == "rm_umum")
             {

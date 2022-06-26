@@ -50,6 +50,14 @@ Route::group(['prefix'=>'rm-umum', 'middleware'=>['isRmUmum','auth']], function(
     Route::post('rekam-medik/umum/create/{id}', [App\Http\Controllers\RmUmum\UmumController::class, 'store'])->name('umum.create');
 });
 
+Route::group(['prefix'=>'rm-gigi', 'middleware'=>['isRmDony','auth']], function(){
+
+    Route::get('rekam-medik/dokter-gigi', [App\Http\Controllers\RmDony\DonyController::class, 'index'])->name('dony.index');
+    Route::get('pasien/getdata', [App\Http\Controllers\RmDony\DonyController::class, 'getDataRmUmum'])->name('dony.getdata');
+    Route::get('rekam-medik/gigi/create/{id}', [App\Http\Controllers\RmDony\DonyController::class, 'create'])->name('dony.create');
+    Route::post('rekam-medik/gigi/create/{id}', [App\Http\Controllers\RmDony\DonyController::class, 'store'])->name('dony.create');
+});
+
 Route::get('/home', function () {
     return view('welcome');
 })->name('home');
