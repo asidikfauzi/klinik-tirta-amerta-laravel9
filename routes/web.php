@@ -45,6 +45,9 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
 Route::group(['prefix'=>'rm-umum', 'middleware'=>['isRmUmum','auth']], function(){
 
     Route::get('rekam-medik/dokter-umum', [App\Http\Controllers\RmUmum\UmumController::class, 'index'])->name('umum.index');
+    Route::get('pasien/getdata', [App\Http\Controllers\RmUmum\UmumController::class, 'getDataRmUmum'])->name('umum.getdata');
+    Route::get('rekam-medik/umum/create/{id}', [App\Http\Controllers\RmUmum\UmumController::class, 'create'])->name('umum.create');
+    Route::post('rekam-medik/umum/create/{id}', [App\Http\Controllers\RmUmum\UmumController::class, 'store'])->name('umum.create');
 });
 
 Route::get('/home', function () {

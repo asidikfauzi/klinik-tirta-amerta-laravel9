@@ -70,7 +70,7 @@
           <li><a class="nav-link scrollto" href="#services">Jadwal</a></li>
           <li><a class="nav-link scrollto" href="#team">Dokter</a></li>
           @if(\Auth::user())
-          <li><a class="getstarted" href="{{route('admin.index')}}">{{Auth::user()->no_pasien}}</a></li>
+          <li><a class="getstarted" href="{{route('admin.index')}}">{{Auth::user()->username}}</a></li>
           @else
           <li><a class="getstarted" href="{{route('login')}}">Login</a></li>
           @endif
