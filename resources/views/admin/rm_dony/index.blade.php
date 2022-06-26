@@ -104,7 +104,7 @@
 
             },
             columns:[
-                    {data: 'no_pasien', name: 'no_pasien'},
+                    {data: 'id', name: 'id'},
                     {data: 'nama_kk', name: 'nama_kk'},
                     {data: 'nama_pasien', name: 'nama_pasien'},
                     {data: 'jenis_kelamin', name: 'jenis_kelamin'},

@@ -34,22 +34,6 @@
                             </div>
                         </div>
                         <div class="row mb-3">
-                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" value="{{ old('password')}}" required autocomplete="password" autofocus>
-                            </div>
-                        </div>
-                        <div class="row mb-3">
-                            <label for="confirm_password" class="col-md-4 col-form-label text-md-end">{{ __('Confirm-Password') }}</label>
-
-                            <div class="col-md-6">
-                                <input id="confirm_password" type="password" class="form-control @error('confirm_password') is-invalid @enderror" name="confirm_password" value="{{ old('confirm_password')}}" required autocomplete="confirm_password" autofocus>
-                            </div>
-                        </div>
-                        <hr>
-
-                        <div class="row mb-3">
                             <label for="nama_kk" class="col-md-4 col-form-label text-md-end">{{ __('Nama KK') }}</label>
 
                             <div class="col-md-6">

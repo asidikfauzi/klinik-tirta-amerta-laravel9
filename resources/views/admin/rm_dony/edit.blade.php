@@ -23,14 +23,14 @@
                 <div class="card-header">{{ __('Edit Pasien') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('admin.edit.pasien.gigi',$data[0]->users_no_pasien) }}">
+                    <form method="POST" action="{{ route('admin.edit.pasien.gigi',$data[0]->id) }}">
                         @csrf
 
                         <div class="row mb-3">
                             <label for="no_pasien" class="col-md-4 col-form-label text-md-end">{{ __('No. Pasien') }}</label>
 
                             <div class="col-md-6">
-                                <input id="no_pasien" type="number"  maxlength="4"  class="form-control @error('no_pasien') is-invalid @enderror" name="no_pasien" value="{{ $data[0]->users_no_pasien }}" required autocomplete="no_pasien" autofocus readonly>
+                                <input id="no_pasien" type="number"  maxlength="4"  class="form-control @error('no_pasien') is-invalid @enderror" name="no_pasien" value="{{ $data[0]->id }}" required autocomplete="no_pasien" autofocus readonly>
                             </div>
                         </div>
 
