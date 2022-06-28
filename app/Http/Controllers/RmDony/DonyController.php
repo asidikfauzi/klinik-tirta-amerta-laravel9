@@ -15,6 +15,7 @@ use App\Export\RmUmumExport;
 use Yajra\DataTables\DataTables;
 use Alert;
 use DB;
+use App\Helper\Uuid;
 
 class DonyController extends Controller
 {
@@ -169,7 +170,9 @@ class DonyController extends Controller
                                     $skor_kalkulus_bukal_gigi_16, $skor_kalkulus_bukal_gigi_26, $skor_kalkulus_labial_gigi_11,
                                     $skor_kalkulus_labial_gigi_31, $skor_kalkulus_lingual_gigi_36, $skor_kalkulus_lingual_gigi_46,
                                     $debris_index, $kalkulus_index, $skor_ohi,$tgl, $diagnosa, $therapy, $keterangan, $dokter){
-
+        
+            $uuid = Uuid::getId();
+            
             $riwayat = new RiwayatMedisDony();
             $riwayat->golongan_darah = $golongan_darah;
             $riwayat->tekanan_darah = $tekanan_darah;
@@ -190,6 +193,7 @@ class DonyController extends Controller
             $riwayat->komplikasi = $komplikasi;
             $riwayat->anamnesa = $anamnesa;
             $riwayat->rm_drg_dony_id = $id;
+            $riwayat->uuid = $uuid;
             $riwayat->save();
 
             $odontogram = new PemeriksaanOdontogram();
@@ -251,6 +255,7 @@ class DonyController extends Controller
             $odontogram->kalkulus_index = $kalkulus_index;
             $odontogram->skor_ohi = $skor_ohi;
             $odontogram->rm_drg_dony_id = $id;
+            $odontogram->uuid = $uuid;
             $odontogram->save();
 
             $catatan = new CatatanPemeriksaanDony();
@@ -260,6 +265,7 @@ class DonyController extends Controller
             $catatan->keterangan = $keterangan;
             $catatan->dokter = $dokter;
             $catatan->rm_drg_dony_id = $id;
+            $catatan->uuid = $uuid;
             $catatan->save();
 
             return "Berhasil";
