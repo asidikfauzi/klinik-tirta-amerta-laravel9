@@ -138,7 +138,7 @@ class RmUmumController extends Controller
     public function show($id)
     {
         //
-        $data = RmUmum::where('uuid', $id)->get();
+        $data = RmUmum::where('id', $id)->get();
         Session::put('no_pasien', $id);
         return view('admin.rm_umum.detail.index', compact('data'));
     }
