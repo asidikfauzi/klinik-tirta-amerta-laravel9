@@ -5,13 +5,15 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\RmUmum;
-use App\Models\FileRmUmum;
+use App\Models\RiwayatMedisUmum;
+use App\Models\CatatanPemeriksaanUmum;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Export\RmUmumExport;
 use Yajra\DataTables\DataTables;
 use Alert;
 use DB;
+use Session;
 
 class RmUmumController extends Controller
 {
@@ -33,7 +35,7 @@ class RmUmumController extends Controller
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('download', function($row){
                             return 
-                            '<a href="#">
+                            '<a href="'.route('admin.show.pasien.umum', $row->id).'">
                             <i class="bi bi-eye" style="color:green;"></i></a>';
                         })
                         ->addColumn('aksi', function($row){
@@ -42,6 +44,24 @@ class RmUmumController extends Controller
                             <i class="bi bi-pencil-square" style="color:blue"></i></a>';
                         })
                         ->rawColumns(['download','aksi'])
+                        ->make(true);
+        
+    }
+
+    public function getDetailRmUmum()
+    {
+        $no_pasien = Session::get('no_pasien');
+        $data = CatatanPemeriksaanUmum::select('id','rm_umum_id', DB::raw("DATE_FORMAT(tgl, '%d-%b-%Y') as tanggal"))
+                        ->where('rm_umum_id', $no_pasien )
+                        ->orderBy('rm_umum_id', 'DESC');
+        return Datatables::of($data)->addIndexColumn()
+                        ->addColumn('riwayat', function($row){
+                            return 
+                            '<a href="'.route('admin.detail.pasien.umum', $row->id).'">
+                                Lihat Detail Riwayat Pasien
+                            </a>';
+                        })
+                        ->rawColumns(['riwayat'])
                         ->make(true);
         
     }
@@ -118,6 +138,20 @@ class RmUmumController extends Controller
     public function show($id)
     {
         //
+        $data = RmUmum::where('id', $id)->get();
+        Session::put('no_pasien', $id);
+        return view('admin.rm_umum.detail.index', compact('data'));
+    }
+
+    public function detail($id)
+    {
+        $no_pasien = Session::get('no_pasien');
+        $data = RmUmum::where('id', $no_pasien)->get();
+        $catatan = CatatanPemeriksaanUmum::where('id', $id)->get();
+        $riwayat = RiwayatMedisUmum::where('id', $id)->get();
+
+        return view('admin.rm_umum.detail.detail', compact('data', 'catatan', 'riwayat'));
+
     }
 
     /**
