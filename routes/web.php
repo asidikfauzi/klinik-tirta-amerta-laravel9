@@ -40,8 +40,11 @@ Route::group(['prefix'=>'admin', 'middleware'=>['isAdmin','auth']], function(){
     Route::get('pasien/gigi/create', [App\Http\Controllers\RmDonyController::class, 'create'])->name('admin.create.pasien.gigi');
     Route::post('pasien/gigi/create', [App\Http\Controllers\RmDonyController::class, 'store'])->name('admin.create.pasien.gigi');
     Route::get('pasien/gigi/getdata', [App\Http\Controllers\RmDonyController::class, 'getDataRmDony'])->name('admin.getdata.pasien.gigi');
+    Route::get('pasien/getdetail/gigi', [App\Http\Controllers\RmDonyController::class, 'getDetailRmDony'])->name('admin.getdetail.pasien.gigi');
     Route::get('pasien/gigi/edit/{id}', [App\Http\Controllers\RmDonyController::class, 'edit'])->name('admin.edit.pasien.gigi');
     Route::post('pasien/gigi/edit/{id}', [App\Http\Controllers\RmDonyController::class, 'update'])->name('admin.edit.pasien.gigi');
+    Route::get('pasien/gigi/show/{id}', [App\Http\Controllers\RmDonyController::class, 'show'])->name('admin.show.pasien.gigi');
+    Route::get('pasien/gigi/detail/{id}', [App\Http\Controllers\RmDonyController::class, 'detail'])->name('admin.detail.pasien.gigi');
     
 });
 
