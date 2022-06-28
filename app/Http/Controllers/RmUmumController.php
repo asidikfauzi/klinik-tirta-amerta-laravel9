@@ -51,13 +51,13 @@ class RmUmumController extends Controller
     public function getDetailRmUmum()
     {
         $no_pasien = Session::get('no_pasien');
-        $data = CatatanPemeriksaanUmum::select('id','rm_umum_id', DB::raw("DATE_FORMAT(tgl, '%d-%b-%Y') as tanggal"))
+        $data = CatatanPemeriksaanUmum::select('uuid','rm_umum_id', DB::raw("DATE_FORMAT(tgl, '%d-%b-%Y') as tanggal"))
                         ->where('rm_umum_id', $no_pasien )
                         ->orderBy('rm_umum_id', 'DESC');
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('riwayat', function($row){
                             return 
-                            '<a href="'.route('admin.detail.pasien.umum', $row->id).'">
+                            '<a href="'.route('admin.detail.pasien.umum', $row->uuid).'">
                                 Lihat Detail Riwayat Pasien
                             </a>';
                         })
@@ -138,7 +138,7 @@ class RmUmumController extends Controller
     public function show($id)
     {
         //
-        $data = RmUmum::where('id', $id)->get();
+        $data = RmUmum::where('uuid', $id)->get();
         Session::put('no_pasien', $id);
         return view('admin.rm_umum.detail.index', compact('data'));
     }
@@ -147,8 +147,8 @@ class RmUmumController extends Controller
     {
         $no_pasien = Session::get('no_pasien');
         $data = RmUmum::where('id', $no_pasien)->get();
-        $catatan = CatatanPemeriksaanUmum::where('id', $id)->get();
-        $riwayat = RiwayatMedisUmum::where('id', $id)->get();
+        $catatan = CatatanPemeriksaanUmum::where('uuid', $id)->get();
+        $riwayat = RiwayatMedisUmum::where('uuid', $id)->get();
 
         return view('admin.rm_umum.detail.detail', compact('data', 'catatan', 'riwayat'));
 
