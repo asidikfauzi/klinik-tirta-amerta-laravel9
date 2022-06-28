@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\RmDony;
-use App\Models\FileRmDony;
+use App\Models\PemeriksaanOdontogram;
 use App\Models\User;
+use App\Models\CatatanPemeriksaanDony;
+use App\Models\RiwayatMedisDony;
 use Illuminate\Support\Facades\Hash;
 use App\Export\RmUmumExport;
 use Yajra\DataTables\DataTables;
@@ -145,6 +147,7 @@ class RmDonyController extends Controller
         $data = RmDony::where('id', $no_pasien)->get();
         $catatan = CatatanPemeriksaanDony::where('id', $id)->get();
         $riwayat = RiwayatMedisDony::where('id', $id)->get();
+        dd($riwayat);
         $odontogram = PemeriksaanOdontogram::where('id', $id)->get();
 
         return view('admin.rm_dony.detail.detail', compact('data', 'catatan', 'riwayat', 'odontogram'));

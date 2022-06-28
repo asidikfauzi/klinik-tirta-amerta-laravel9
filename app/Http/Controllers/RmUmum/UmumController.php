@@ -11,6 +11,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use App\Export\RmUmumExport;
 use Yajra\DataTables\DataTables;
+use App\Helper\Uuid;
 use Alert;
 use DB;
 
@@ -93,6 +94,8 @@ class UmumController extends Controller
                 $penerima_edukasi, $kondisi, $serangan_awal, $bahasa_sehari_hari, $penterjemah,
                 $bahasa_isyarat, $tgl, $subjective, $objective, $assasment, $planning, $dokter){
             
+            $uuid = Uuid::getId();
+
             $riwayat = new RiwayatMedisUmum();
             $riwayat->nama_penanggung_jawab = $nama_penanggung_jawab;
             $riwayat->umur_penanggung_jawab = $umur_penanggung_jawab;
@@ -107,6 +110,7 @@ class UmumController extends Controller
             $riwayat->penterjemah = $penterjemah;
             $riwayat->bahasa_isyarat = $bahasa_isyarat;
             $riwayat->rm_umum_id = $id;
+            $riwayat->uuid = $uuid;
             $riwayat->save();
 
             $catatan = new CatatanPemeriksaanUmum();
@@ -117,6 +121,7 @@ class UmumController extends Controller
             $catatan->planning = $planning;
             $catatan->dokter = $dokter;
             $catatan->rm_umum_id = $id;
+            $catatan->uuid = $uuid;
             $catatan->save();
 
             return 'Berhasil';
