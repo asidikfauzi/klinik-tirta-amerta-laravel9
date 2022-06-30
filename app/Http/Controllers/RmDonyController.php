@@ -148,7 +148,6 @@ class RmDonyController extends Controller
         $catatan = CatatanPemeriksaanDony::where('uuid', $id)->get();
         $riwayat = RiwayatMedisDony::where('uuid', $id)->get();
         $odontogram = PemeriksaanOdontogram::where('uuid', $id)->get();
-
         return view('admin.rm_dony.detail.detail', compact('data', 'catatan', 'riwayat', 'odontogram'));
 
     }

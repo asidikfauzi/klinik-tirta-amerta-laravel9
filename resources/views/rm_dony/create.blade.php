@@ -570,6 +570,9 @@
                                 <input id="skor_ohi" type="text" class="form-control @error('skor_ohi') is-invalid @enderror" name="skor_ohi" placeholder="Debris Index + Kalkulus Index" value="{{ old('skor_ohi') }}" required autocomplete="skor_ohi">
                             </div>
                         </div>
+                        <div class="row mb-3 mt-3">
+                            <img src="{{asset('assets/img/hasil.png')}}" alt="" style="width: 50%; margin:auto;">
+                        </div>
                         <hr>
                         <label for="catatan"><b>Catatan Perawatan</b></label>
                         <div class="row mb-3 mt-3">

@@ -135,7 +135,248 @@
             </div>
         </div>
     </div>
-    {{-- <label class="col-md-2 col-form-label mt-3"><b>Catatan Perawatan</b></label>
+    <label class="col-md-3 col-form-label mt-3"><b>Pemeriksaan Odontogram</b></label>
+    <div class="row justify-content-center">   
+        
+        <div class="col-md-10">
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('11 [51]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v11_51}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('61 [21]') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v61_21}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('12 [52]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v12_52}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('62 [21]') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v62_22}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('13 [53]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v13_53}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('63 [23]') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v63_23}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('14 [54]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v14_54}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('64 [24]') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v64_24}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('15 [55]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v15_55}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('65 [25]') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v61_21}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('16') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v16}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('26') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v26}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('17') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v17}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('27') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v61_21}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('18') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v11_51}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('28') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v61_21}}</label>
+                </div>
+            </div>
+            <div class="row mb-3 mt-3">
+                <img src="{{asset('assets/img/odontogram.png')}}" alt="" style="width: 50%;">
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('48') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v48}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('38') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v38}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('47') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v47}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('37') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v37}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('46') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v46}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('36') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v36}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('45 [85]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v45_85}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('[75] 35') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v75_35}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('44 [84]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v44_84}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('[74] 34') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v74_34}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('43 [83]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v43_83}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('[73] 33') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v73_33}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('42 [82]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v42_82}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('[72] 32') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v72_32}}</label>
+                </div>
+            </div>
+            <div class="row">
+                <label class="col-md-1 col-form-label">{{ __('41 [81]') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->v41_81}}</label>
+                <div class="col-md-6">
+                    <label class="col-md-2 col-form-label">{{ __('[71] 31') }}</label>
+                    <label class="col-md-4 col-form-label">: {{$odontogram[0]->v71_31}}</label>
+                </div>
+            </div>
+            <div class="row mt-4">
+                <label class="col-md-2 col-form-label">{{ __('Occlusi') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->occlusi}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('Torus Palatinus') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->torus_palatinus}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('Torus Mandibularis') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->torus_mandiboluris}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('Palatum') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->palatum}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('Diastema') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->diastema}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('Gigi Anomali') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->gigi_anomali}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('Lain-lain') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->lain_lain}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('D') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->d}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('M') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->m}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('F') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->f}}</label>
+            </div>
+            <div class="row mb-3 mt-3">
+                <img src="{{asset('assets/img/gigi_dony.png')}}" alt="" style="width: 25%;">
+            </div>
+            <div class="row">
+                <table style="width: 50%;">
+                    <tr>
+                        <th>No</th>
+                        <th>Pemeriksaan gigi yang diperiksa</th>
+                        <th>Skor Debris Index</th>
+                        <th>Skor Kalkulus Index</th>
+                    </tr>
+                    <tr>
+                        <td>1.</td>
+                        <td>Bukal Gigi 16</td>
+                        <td>{{$odontogram[0]->skor_debris_bukal_gigi_16}}</td>
+                        <td>{{$odontogram[0]->skor_kalkulus_bukal_gigi_16}}</td>
+                    </tr>
+                    <tr>
+                        <td>2.</td>
+                        <td>Bukal Gigi 26</td>
+                        <td>{{$odontogram[0]->skor_debris_bukal_gigi_26}}</td>
+                        <td>{{$odontogram[0]->skor_kalkulus_bukal_gigi_26}}</td>
+                    </tr>
+                    <tr>
+                        <td>3.</td>
+                        <td>Lingual Gigi 36</td>
+                        <td>{{$odontogram[0]->skor_debris_lingual_gigi_36}}</td>
+                        <td>{{$odontogram[0]->skor_kalkulus_lingual_gigi_36}}</td>
+                    </tr>
+                    <tr>
+                        <td>4.</td>
+                        <td>Lingual Gigi 46</td>
+                        <td>{{$odontogram[0]->skor_debris_lingual_gigi_46}}</td>
+                        <td>{{$odontogram[0]->skor_kalkulus_lingual_gigi_46}}</td>
+                    </tr>
+                    <tr>
+                        <td>5.</td>
+                        <td>Labial Gigi 11</td>
+                        <td>{{$odontogram[0]->skor_debris_labial_gigi_11}}</td>
+                        <td>{{$odontogram[0]->skor_kalkulus_labial_gigi_11}}</td>
+                    </tr>
+                    <tr>
+                        <td>6.</td>
+                        <td>Labial Gigi 31</td>
+                        <td>{{$odontogram[0]->skor_debris_labial_gigi_31}}</td>
+                        <td>{{$odontogram[0]->skor_kalkulus_labial_gigi_31}}</td>
+                    </tr>
+                </table>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('Debris Index') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->debris_index}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('Kalkulus Index') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->kalkulus_index}}</label>
+            </div>
+            <div class="row">
+                <label class="col-md-2 col-form-label">{{ __('Skor OHI-s') }}</label>
+                <label class="col-md-4 col-form-label">: {{$odontogram[0]->skor_ohi}}</label>
+            </div>
+            <div class="row mb-3 mt-3">
+                <img src="{{asset('assets/img/hasil.png')}}" alt="" style="width: 50%;">
+            </div>
+        </div>
+    </div>
+    <label class="col-md-2 col-form-label mt-3"><b>Catatan Perawatan</b></label>
     <div class="row justify-content-center">   
         
         <div class="col-md-10">
@@ -144,27 +385,23 @@
                 <label class="col-md-4 col-form-label">: {{date('d-M-Y', strtotime($catatan[0]->tgl))}}</label>
             </div>
             <div class="row ">
-                <label class="col-md-2 col-form-label">{{ __('Subjective') }}</label>
-                <label class="col-md-4 col-form-label">: {{$catatan[0]->subjective}}</label>
+                <label class="col-md-2 col-form-label">{{ __('Diagnosa') }}</label>
+                <label class="col-md-4 col-form-label">: {{$catatan[0]->diagnosa}}</label>
             </div>
             <div class="row">
-                <label class="col-md-2 col-form-label">{{ __('Objective') }}</label>
-                <label class="col-md-4 col-form-label">: {{$catatan[0]->objective}}</label>
+                <label class="col-md-2 col-form-label">{{ __('Therapy') }}</label>
+                <label class="col-md-4 col-form-label">: {{$catatan[0]->therapy}}</label>
             </div>
             <div class="row">
-                <label class="col-md-2 col-form-label">{{ __('Assasment') }}</label>
-                <label class="col-md-4 col-form-label">: {{$catatan[0]->assasment}}</label>
-            </div>
-            <div class="row">
-                <label class="col-md-2 col-form-label">{{ __('Planning') }}</label>
-                <label class="col-md-4 col-form-label">: {{$catatan[0]->planning}}</label>
+                <label class="col-md-2 col-form-label">{{ __('Keterangan') }}</label>
+                <label class="col-md-4 col-form-label">: {{$catatan[0]->keterangan}}</label>
             </div>
             <div class="row">
                 <label class="col-md-2 col-form-label">{{ __('Dokter') }}</label>
                 <label class="col-md-4 col-form-label">: {{$catatan[0]->dokter}}</label>
             </div>
         </div>
-    </div> --}}
+    </div>
 
 </div>
 </section>
