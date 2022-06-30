@@ -75,7 +75,10 @@
           @if(\Auth::user())
           <li class="dropdown"><a href="#"><span>{{Auth::user()->username}}</span> </i></a>
             <ul>
+              @if(Auth::user()->role === 'admin')
               <li><a href="{{ route('admin.index') }}">Rekam Medik</a></li>
+              <li><a href="{{ route('register') }}">Register</a></li>
+              @endif
               <li><a href="#" onclick="event.preventDefault();document.getElementById('logout-form').submit();">Logout</a></li>
               <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none">
                 {{ csrf_field() }}

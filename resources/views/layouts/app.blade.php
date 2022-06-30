@@ -70,7 +70,14 @@
           <li><a class="nav-link scrollto" href="#services">Jadwal</a></li>
           <li><a class="nav-link scrollto" href="#team">Dokter</a></li>
           @if(\Auth::user())
+          @if(Auth::user()->role === 'admin')
           <li><a class="getstarted" href="{{route('admin.index')}}">{{Auth::user()->username}}</a></li>
+          @elseif(Auth::user()->role === 'rm_dony')
+          <li><a class="getstarted" href="{{route('dony.index')}}">{{Auth::user()->username}}</a></li>
+          @elseif(Auth::user()->role === 'rm_umum')
+          <li><a class="getstarted" href="{{route('umum.index')}}">{{Auth::user()->username}}</a></li>
+          @endif
+          
           @else
           <li><a class="getstarted" href="{{route('login')}}">Login</a></li>
           @endif
