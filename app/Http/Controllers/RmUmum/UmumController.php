@@ -14,6 +14,7 @@ use Yajra\DataTables\DataTables;
 use App\Helper\Uuid;
 use Alert;
 use DB;
+use Session;
 
 class UmumController extends Controller
 {
@@ -35,7 +36,7 @@ class UmumController extends Controller
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('download', function($row){
                             return 
-                            '<a href="#">
+                            '<a href="'.route('umum.show',$row->id).'">
                             <i class="bi bi-eye" style="color:green;"></i></a>';
                         })
                         ->addColumn('aksi', function($row){
@@ -44,6 +45,24 @@ class UmumController extends Controller
                             <i class="bi bi-file-earmark-plus" style="color:green;"></i></a>';
                         })
                         ->rawColumns(['download','aksi'])
+                        ->make(true);
+        
+    }
+
+    public function getDetailRmUmum()
+    {
+        $no_pasien = Session::get('no_pasien');
+        $data = CatatanPemeriksaanUmum::select('uuid','rm_umum_id', DB::raw("DATE_FORMAT(tgl, '%d-%b-%Y') as tanggal"))
+                        ->where('rm_umum_id', $no_pasien )
+                        ->orderBy('rm_umum_id', 'DESC');
+        return Datatables::of($data)->addIndexColumn()
+                        ->addColumn('riwayat', function($row){
+                            return 
+                            '<a href="'.route('umum.detail', $row->uuid).'">
+                                Lihat Detail Riwayat Pasien
+                            </a>';
+                        })
+                        ->rawColumns(['riwayat'])
                         ->make(true);
         
     }
@@ -145,6 +164,20 @@ class UmumController extends Controller
     public function show($id)
     {
         //
+        $data = RmUmum::where('id', $id)->get();
+        Session::put('no_pasien', $id);
+        return view('rm_umum.detail.index', compact('data'));
+    }
+
+    public function detail($id)
+    {
+        $no_pasien = Session::get('no_pasien');
+        $data = RmUmum::where('id', $no_pasien)->get();
+        $catatan = CatatanPemeriksaanUmum::where('uuid', $id)->get();
+        $riwayat = RiwayatMedisUmum::where('uuid', $id)->get();
+
+        return view('rm_umum.detail.detail', compact('data', 'catatan', 'riwayat'));
+
     }
 
     /**

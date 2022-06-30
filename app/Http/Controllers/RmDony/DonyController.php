@@ -16,6 +16,7 @@ use Yajra\DataTables\DataTables;
 use Alert;
 use DB;
 use App\Helper\Uuid;
+use Session;
 
 class DonyController extends Controller
 {
@@ -39,7 +40,7 @@ class DonyController extends Controller
         return Datatables::of($data)->addIndexColumn()
                         ->addColumn('download', function($row){
                             return 
-                            '<a href="#">
+                            '<a href="'.route('dony.show', $row->id).'">
                             <i class="bi bi-eye" style="color:green;"></i></a>';
                         })
                         ->addColumn('aksi', function($row){
@@ -48,6 +49,24 @@ class DonyController extends Controller
                             <i class="bi bi-file-earmark-plus" style="color:green;"></i></a>';
                         })
                         ->rawColumns(['download','aksi'])
+                        ->make(true);
+        
+    }
+
+    public function getDetailRmDony()
+    {
+        $no_pasien = Session::get('no_pasien');
+        $data = CatatanPemeriksaanDony::select('uuid','rm_drg_dony_id', DB::raw("DATE_FORMAT(tgl, '%d-%b-%Y') as tanggal"))
+                        ->where('rm_drg_dony_id', $no_pasien )
+                        ->orderBy('rm_drg_dony_id', 'DESC');
+        return Datatables::of($data)->addIndexColumn()
+                        ->addColumn('riwayat', function($row){
+                            return 
+                            '<a href="'.route('dony.detail', $row->uuid).'">
+                                Lihat Detail Riwayat Pasien
+                            </a>';
+                        })
+                        ->rawColumns(['riwayat'])
                         ->make(true);
         
     }
@@ -289,6 +308,20 @@ class DonyController extends Controller
     public function show($id)
     {
         //
+        $data = RmDony::where('id', $id)->get();
+        Session::put('no_pasien', $id);
+        return view('rm_dony.detail.index', compact('data'));
+    }
+
+    public function detail($id)
+    {
+        $no_pasien = Session::get('no_pasien');
+        $data = RmDony::where('id', $no_pasien)->get();
+        $catatan = CatatanPemeriksaanDony::where('uuid', $id)->get();
+        $riwayat = RiwayatMedisDony::where('uuid', $id)->get();
+        $odontogram = PemeriksaanOdontogram::where('uuid', $id)->get();
+        return view('rm_dony.detail.detail', compact('data', 'catatan', 'riwayat', 'odontogram'));
+
     }
 
     /**

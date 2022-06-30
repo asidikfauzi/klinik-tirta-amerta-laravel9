@@ -52,16 +52,22 @@ Route::group(['prefix'=>'rm-umum', 'middleware'=>['isRmUmum','auth']], function(
 
     Route::get('rekam-medik/dokter-umum', [App\Http\Controllers\RmUmum\UmumController::class, 'index'])->name('umum.index');
     Route::get('pasien/getdata', [App\Http\Controllers\RmUmum\UmumController::class, 'getDataRmUmum'])->name('umum.getdata');
+    Route::get('pasien/getdetail/dokter-umum', [App\Http\Controllers\RmUmum\UmumController::class, 'getDetailRmUmum'])->name('umum.getdetail');
     Route::get('rekam-medik/umum/create/{id}', [App\Http\Controllers\RmUmum\UmumController::class, 'create'])->name('umum.create');
     Route::post('rekam-medik/umum/create/{id}', [App\Http\Controllers\RmUmum\UmumController::class, 'store'])->name('umum.create');
+    Route::get('pasien/umum/show/{id}', [App\Http\Controllers\RmUmum\UmumController::class, 'show'])->name('umum.show');
+    Route::get('pasien/umum/detail/{id}', [App\Http\Controllers\RmUmum\UmumController::class, 'detail'])->name('umum.detail');
 });
 
 Route::group(['prefix'=>'rm-gigi', 'middleware'=>['isRmDony','auth']], function(){
 
     Route::get('rekam-medik/dokter-gigi', [App\Http\Controllers\RmDony\DonyController::class, 'index'])->name('dony.index');
     Route::get('pasien/getdata', [App\Http\Controllers\RmDony\DonyController::class, 'getDataRmDony'])->name('dony.getdata');
+    Route::get('pasien/getdetail/gigi', [App\Http\Controllers\RmDony\DonyController::class, 'getDetailRmDony'])->name('dony.getdetail');
     Route::get('rekam-medik/gigi/create/{id}', [App\Http\Controllers\RmDony\DonyController::class, 'create'])->name('dony.create');
     Route::post('rekam-medik/gigi/create/{id}', [App\Http\Controllers\RmDony\DonyController::class, 'store'])->name('dony.create');
+    Route::get('pasien/gigi/show/{id}', [App\Http\Controllers\RmDony\DonyController::class, 'show'])->name('dony.show');
+    Route::get('pasien/gigi/detail/{id}', [App\Http\Controllers\RmDony\DonyController::class, 'detail'])->name('dony.detail');
 });
 
 Route::get('/home', function () {
