@@ -352,48 +352,30 @@
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
               <img src="assets/img/team/dokter1.png" alt="" style="width:200px; height: 200px; border-radius: 50%;">
-              <h4>Walter White</h4>
-              <span>Chief Executive Officer</span>
+              <h4>Dokter Gigi</h4>
               <p>
-                Magni qui quod omnis unde et eos fuga et exercitationem. Odio veritatis perspiciatis quaerat qui aut aut aut
+                Tim Dokter Gigi Klinik Tirta Amerta telah bersertifikat dan terpercaya dalam hal pemeriksaan gigi.
               </p>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-              </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
               <img src="assets/img/team/dokter3.png" alt="" style="width:200px; height: 200px; border-radius: 50%;">
-              <h4>Sarah Jhinson</h4>
-              <span>Product Manager</span>
+              <h4>Resepsionis</h4>
               <p>
-                Repellat fugiat adipisci nemo illum nesciunt voluptas repellendus. In architecto rerum rerum temporibus
+                Resepsionis Klinik Tirta Amerta yang telah berpengalaman dalam mengelola klinik.
               </p>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-              </div>
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 d-flex align-items-stretch">
             <div class="member">
               <img src="assets/img/team/dokter2.png" alt="" style="width:200px; height: 200px; border-radius: 50%;">
-              <h4>William Anderson</h4>
-              <span>CTO</span>
+              <h4>Dokter Umum</h4>
               <p>
-                Voluptas necessitatibus occaecati quia. Earum totam consequuntur qui porro et laborum toro des clara
+                Tim Dokter Umum Klinik Tirta Amerta telah bersertifikat dan terpercaya dalam hal seputar kesehatan.
               </p>
-              <div class="social">
-                <a href=""><i class="bi bi-twitter"></i></a>
-                <a href=""><i class="bi bi-facebook"></i></a>
-                <a href=""><i class="bi bi-instagram"></i></a>
-              </div>
             </div>
           </div>
 
