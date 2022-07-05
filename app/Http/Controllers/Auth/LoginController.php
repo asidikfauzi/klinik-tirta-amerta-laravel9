@@ -68,7 +68,7 @@ class LoginController extends Controller
         }
         else
         {
-            return redirect()->route('login')->with('error', 'No Pasien atau password salah');
+            return redirect()->route('login')->with('failed', 'Username atau password salah');
         }
     }
 

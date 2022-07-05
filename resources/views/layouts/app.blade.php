@@ -194,15 +194,15 @@
             <p class="fst-italic">
               Apa itu Klinik Tirta Amerta ?
             </p>
-            <ul>
-              <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat.</li>
-              <li><i class="bi bi-check-circled"></i> Duis aute irure dolor in reprehenderit in voluptate velit.</li>
-              <li><i class="bi bi-check-circled"></i> Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</li>
-            </ul>
             <p>
-              Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-              velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-              culpa qui officia deserunt mollit anim id est laborum
+              Klinik Tirta Amerta merupakan fasilitas kesehatan yang menyelenggarakan pelayanan medis, berupa medis dasar dan atau medis spesialistik. Diselenggarakan oleh lebih dari satu jenis tenaga kesehatan juga dipimpin oleh seorang tenaga medis berdasarkan Permenkes RI No.9, 2014.
+              Informasi Jenis Pelayanan Klinik Tirta Amerta
+              <ul>
+                <li>Pelayanan Pemeriksaan Umum (Termasuk Surat Sehat)</li>
+                <li>Pelayanan Pemeriksaan Gigi.</li>
+                <li>Pelayanan Laboratorium.</li>
+                <li>Pelayanan Farmasi/Apotek (BPJS/Non BPJS)</li>
+              </ul>
             </p>
           </div>
         </div>
